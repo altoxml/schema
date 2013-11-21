@@ -323,11 +323,6 @@
 				<xsd:documentation>The next block in reading sequence on the page.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:attribute name="noQA" type="xsd:boolean" use="optional"> 
-		<xsd:annotation> 
-			<xsd:documentation>the text content of this block isn't not in the OCR rate perimeter</xsd:documentation  > 
-		</xsd:annotation> 
-		</xsd:attribute>
 		<xsd:attributeGroup ref="xlink:simpleLink"/>
 	</xsd:complexType>
 	<xsd:complexType name="StringType" mixed="false">
