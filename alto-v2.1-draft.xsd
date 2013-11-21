@@ -89,9 +89,24 @@
 							</xsd:element>
 							<xsd:element name="sourceImageInformation" type="sourceImageInformationType" minOccurs="0"/>
 							<xsd:element name="OCRProcessing" minOccurs="0" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation>DEPRECATED: Processing element should be used instead.</xsd:documentation>
+								</xsd:annotation>
 								<xsd:complexType>
 									<xsd:complexContent>
 										<xsd:extension base="ocrProcessingType">
+											<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+										</xsd:extension>
+									</xsd:complexContent>
+								</xsd:complexType>
+							</xsd:element>
+							<xsd:element name="Processing" minOccurs="0" maxOccurs="unbounded">
+								<xsd:annotation>
+									<xsd:documentation>Container element for recording processing steps</xsd:documentation>
+								</xsd:annotation>
+								<xsd:complexType>
+									<xsd:complexContent>
+										<xsd:extension base="processingStepType">
 											<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 										</xsd:extension>
 									</xsd:complexContent>
@@ -538,34 +553,44 @@
 			<xsd:element name="postProcessingStep" type="processingStepType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:complexType name="processingStepType">
-		<xsd:annotation>
+	<xsd:complexType name="processingStepType">		
+		<xsd:annotation> 
 			<xsd:documentation>A processing step.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:element name="processingDateTime" type="dateTimeType" minOccurs="0">
+			<xsd:element name="processingStepType" type="xsd:string" minOccurs="0"> 
+				<xsd:annotation>
+					<xsd:documentation>Type of processing step</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="processingDateTime" type="dateTimeType" minOccurs="0"> 
 				<xsd:annotation>
 					<xsd:documentation>Date or DateTime the image was processed.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="processingAgency" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>Identifies the organizationlevel producer(s) of the processed image.</xsd:documentation>
+					<xsd:documentation>Identifies the organizationlevel producer(s).</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="processingStepDescription" type="xsd:string" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
-					<xsd:documentation>An ordinal listing of the image processing steps performed. For example, "image despeckling."</xsd:documentation>
+					<xsd:documentation>An ordinal listing of the image processing steps performed.
+						For example, "image despeckling."</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="processingStepSettings" type="xsd:string" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>A description of any setting of the processing application. For example, for a multi-engine OCR application this might include the engines which were used. Ideally, this description should be adequate so that someone else using the same application can produce identical results.</xsd:documentation>
+					<xsd:documentation>A description of any setting of the processing application.
+						For example, for a multi-engine OCR application this might include the
+						engines which were used. Ideally, this description should be adequate so
+						that someone else using the same application can produce identical
+						results.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="processingSoftware" type="processingSoftwareType" minOccurs="0"/>
-		</xsd:sequence>
-	</xsd:complexType>
+		</xsd:sequence>		
+	</xsd:complexType> 
 	<xsd:complexType name="processingSoftwareType">
 		<xsd:annotation>
 			<xsd:documentation>Information about a software application. Where applicable, the preferred method for determining this information is by selecting Help --> About.</xsd:documentation>
