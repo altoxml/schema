@@ -441,12 +441,13 @@
 	</xsd:complexType>
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
-			<xsd:documentation>An ellipse shape.</xsd:documentation>
+			<xsd:documentation>An ellipse shape. The point described is the center of the shape.
+				HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:attribute name="HPOS"/>
-		<xsd:attribute name="VPOS"/>
-		<xsd:attribute name="HLENGTH"/>
-		<xsd:attribute name="VLENGTH"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="HLENGTH" type="xsd:float" use="required"/>
+		<xsd:attribute name="VLENGTH" type="xsd:float" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="CircleType">
 		<xsd:annotation>
