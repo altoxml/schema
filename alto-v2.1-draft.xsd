@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- ALTO: Analyzed Layout and Text Object -->
+<!-- ALTO: Analyzed Layout and Text Object  -->
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 <!-- Version 2.1 DRAFT -->
@@ -69,7 +69,15 @@
 						<xsd:sequence>
 							<xsd:element name="MeasurementUnit" minOccurs="0">
 								<xsd:annotation>
-									<xsd:documentation>All measurement values inside the alto file except fontsize are related to this unit. The default is 1/10 of mm</xsd:documentation>
+									<xsd:documentation>All measurement values inside the alto file except fontsize
+										are related to this unit. 
+										The values for pixel will be related to the resolution of the image based
+										on which the layout is described. In case the original image is not known
+										the scaling factor can be calculated based on total width and height of
+										the image and the according information of the PAGE element.
+										pixel: 1 pixel
+										mm10: 1/10 of millimeter
+										inch1200: 1/1200 of inch</xsd:documentation>
 								</xsd:annotation>
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
@@ -151,6 +159,11 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
+				<xsd:element name="Tags" type="TagsType">
+					<xsd:annotation>
+						<xsd:documentation>TODO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
 				<xsd:element name="Layout">
 					<xsd:annotation>
 						<xsd:documentation>The root layout element.</xsd:documentation>
@@ -196,9 +209,9 @@
 										</xsd:annotation>
 									</xsd:attribute>
 									<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
-									<xsd:attribute name="HEIGHT" type="xsd:int" use="optional"/>
-									<xsd:attribute name="WIDTH" type="xsd:int" use="optional"/>
-									<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:int" use="required">
+									<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+									<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+									<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:float" use="required">
 										<xsd:annotation>
 											<xsd:documentation>The number of the page within the document.</xsd:documentation>
 										</xsd:annotation>
@@ -309,10 +322,10 @@
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS"/>
-		<xsd:attribute name="HEIGHT" type="xsd:int" use="required"/>
-		<xsd:attribute name="WIDTH" type="xsd:int" use="required"/>
-		<xsd:attribute name="HPOS" type="xsd:int" use="required"/>
-		<xsd:attribute name="VPOS" type="xsd:int" use="required"/>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="ROTATION" type="xsd:float" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Tells the rotation of the block e.g. text or illustration. The value is in degree counterclockwise.</xsd:documentation>
@@ -433,20 +446,21 @@
 	</xsd:complexType>
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
-			<xsd:documentation>An ellipse shape.</xsd:documentation>
+			<xsd:documentation>An ellipse shape. The point described is the center of the shape.
+				HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:attribute name="HPOS"/>
-		<xsd:attribute name="VPOS"/>
-		<xsd:attribute name="HLENGTH"/>
-		<xsd:attribute name="VLENGTH"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="HLENGTH" type="xsd:float" use="required"/>
+		<xsd:attribute name="VLENGTH" type="xsd:float" use="required"/>
 	</xsd:complexType>
 	<xsd:complexType name="CircleType">
 		<xsd:annotation>
-			<xsd:documentation>A circle shape.</xsd:documentation>
+			<xsd:documentation>A circle shape. HPOS and VPOS describe there the center of the circle.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:attribute name="HPOS"/>
-		<xsd:attribute name="VPOS"/>
-		<xsd:attribute name="RADIUS"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="RADIUS" type="xsd:float" use="required"/>
 	</xsd:complexType>
 	<xsd:attributeGroup name="formattingAttributeGroup">
 		<xsd:annotation>
@@ -688,7 +702,7 @@
 										<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
 										<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
 										<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
-										<xsd:attribute name="CONTENT" use="required"/>
+										<xsd:attribute name="CONTENT" type="xsd:string" use="required"/>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
@@ -711,4 +725,61 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	<xsd:complexType name="TagsType">
+		<xsd:sequence>
+			<xsd:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						TODO
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TagType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+						The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" maxOccurs="unbounded" processContents="lax"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		<xsd:attribute name="TYPE" type="TagsTypeType" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Type of the tag to classify what kind of information tag contains.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="SUBTYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Subtype helps to clarify the function of the tag information, especially in case of usage of type='OTHER'.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:simpleType name="TagsTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="STRUCTURE"/>
+			<xsd:enumeration value="LAYOUT"/>
+			<xsd:enumeration value="NAMED-ENTITY"/>
+			<xsd:enumeration value="ROLE"/>
+			<xsd:enumeration value="OTHER"/>
+		</xsd:restriction>
+	</xsd:simpleType> 
 </xsd:schema>
