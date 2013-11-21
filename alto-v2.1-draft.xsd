@@ -688,7 +688,7 @@
 										<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
 										<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
 										<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
-										<xsd:attribute name="CONTENT" use="required"/>
+										<xsd:attribute name="CONTENT" type="xsd:string" use="required"/>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
