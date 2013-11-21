@@ -159,6 +159,11 @@
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
+				<xsd:element name="Tags" type="TagsType">
+					<xsd:annotation>
+						<xsd:documentation>TODO</xsd:documentation>
+					</xsd:annotation>
+				</xsd:element>
 				<xsd:element name="Layout">
 					<xsd:annotation>
 						<xsd:documentation>The root layout element.</xsd:documentation>
@@ -720,4 +725,61 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
+	<xsd:complexType name="TagsType">
+		<xsd:sequence>
+			<xsd:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+					<xsd:documentation>
+						TODO
+					</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TagType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+						The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+					</xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" maxOccurs="unbounded" processContents="lax"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		<xsd:attribute name="TYPE" type="TagsTypeType" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Type of the tag to classify what kind of information tag contains.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="SUBTYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Subtype helps to clarify the function of the tag information, especially in case of usage of type='OTHER'.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:simpleType name="TagsTypeType">
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="STRUCTURE"/>
+			<xsd:enumeration value="LAYOUT"/>
+			<xsd:enumeration value="NAMED-ENTITY"/>
+			<xsd:enumeration value="ROLE"/>
+			<xsd:enumeration value="OTHER"/>
+		</xsd:restriction>
+	</xsd:simpleType> 
 </xsd:schema>
