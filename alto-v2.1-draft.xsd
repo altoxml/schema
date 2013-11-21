@@ -204,9 +204,9 @@
 										</xsd:annotation>
 									</xsd:attribute>
 									<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
-									<xsd:attribute name="HEIGHT" type="xsd:int" use="optional"/>
-									<xsd:attribute name="WIDTH" type="xsd:int" use="optional"/>
-									<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:int" use="required">
+									<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+									<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+									<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:float" use="required">
 										<xsd:annotation>
 											<xsd:documentation>The number of the page within the document.</xsd:documentation>
 										</xsd:annotation>
@@ -317,10 +317,10 @@
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS"/>
-		<xsd:attribute name="HEIGHT" type="xsd:int" use="required"/>
-		<xsd:attribute name="WIDTH" type="xsd:int" use="required"/>
-		<xsd:attribute name="HPOS" type="xsd:int" use="required"/>
-		<xsd:attribute name="VPOS" type="xsd:int" use="required"/>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="ROTATION" type="xsd:float" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Tells the rotation of the block e.g. text or illustration. The value is in degree counterclockwise.</xsd:documentation>
