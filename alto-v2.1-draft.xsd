@@ -451,11 +451,11 @@
 	</xsd:complexType>
 	<xsd:complexType name="CircleType">
 		<xsd:annotation>
-			<xsd:documentation>A circle shape.</xsd:documentation>
+			<xsd:documentation>A circle shape. HPOS and VPOS describe there the center of the circle.</xsd:documentation>
 		</xsd:annotation>
-		<xsd:attribute name="HPOS"/>
-		<xsd:attribute name="VPOS"/>
-		<xsd:attribute name="RADIUS"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="RADIUS" type="xsd:float" use="required"/>
 	</xsd:complexType>
 	<xsd:attributeGroup name="formattingAttributeGroup">
 		<xsd:annotation>
