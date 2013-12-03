@@ -415,6 +415,11 @@
 				<xsd:documentation>Confidence level of each character in that string. A list of numbers, one number between 0 (sure) and 9 (unsure) for each character.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
+		<xsd:attribute name="LANG" type="xsd:language" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Attribute to record language of the string. The language should be recorded at the highest level possible.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
 	</xsd:complexType>
 	<xsd:complexType name="PageSpaceType">
 		<xsd:annotation>
@@ -726,10 +731,24 @@
 									<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not.</xsd:documentation>
 								</xsd:annotation>
 							</xsd:attribute>
+							<xsd:attribute name="LANG" type="xsd:language" use="optional">
+								<xsd:annotation>
+									<xsd:documentation>Attribute to record language of the textline.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:attribute>
 						</xsd:complexType>
 					</xsd:element>
 				</xsd:sequence>
-				<xsd:attribute name="language" type="xsd:language" use="optional"/>
+				<xsd:attribute name="language" type="xsd:language" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>Attribute deprecated. LANG should be used instead.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+				<xsd:attribute name="LANG" type="xsd:language" use="optional">
+					<xsd:annotation>
+						<xsd:documentation>Attribute to record language of the textblock.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
