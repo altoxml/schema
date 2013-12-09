@@ -330,6 +330,7 @@
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS"/>
+		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
 		<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
 		<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
@@ -370,6 +371,7 @@
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="optional"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
+		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
 		<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
 		<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
 		<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
@@ -460,7 +462,7 @@
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
 			<xsd:documentation>An ellipse shape. The point described is the center of the shape.
-				HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
+                                HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
@@ -611,7 +613,7 @@
 	</xsd:simpleType>
 	<xsd:simpleType name="fontStylesType">
 		<xsd:annotation>
-			<xsd:documentation>List of  any combination of font styles</xsd:documentation>
+			<xsd:documentation>List of any combination of font styles</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction>
 			<xsd:simpleType>
@@ -721,6 +723,7 @@
 							</xsd:sequence>
 							<xsd:attribute name="ID" type="xsd:ID"/>
 							<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
+							<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
 							<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
 							<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
 							<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
@@ -754,39 +757,35 @@
 	</xsd:complexType>
 	<xsd:complexType name="TagsType">
 		<xsd:sequence>
-			<xsd:element name="Tag" type="TagType" minOccurs="0" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>
-						TODO
-					</xsd:documentation>
-				</xsd:annotation>
-			</xsd:element>
+			<xsd:choice minOccurs="0" maxOccurs="unbounded">
+			  <xsd:element name="NE" type="NEType"/>
+			  <xsd:element name="Layout" type="LayoutType"/>
+			  <xsd:element name="Structure" type="StructureType"/>
+			  <xsd:element name="Role" type="RoleType"/>
+			  <xsd:element name="Other" type="OtherType"/>
+			</xsd:choice>
 		</xsd:sequence>
 	</xsd:complexType>
-	<xsd:complexType name="TagType">
+	<xsd:complexType name="NEType">
 		<xsd:sequence>
 			<xsd:element name="Extension" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="en">
-						The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
-					</xsd:documentation>
+                                                The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+                                        </xsd:documentation>
 				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
-						<xsd:any namespace="##any" maxOccurs="unbounded" processContents="lax"/>
+						<xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
 					</xsd:sequence>
 				</xsd:complexType>
 			</xsd:element>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
-		<xsd:attribute name="TYPE" type="TagsTypeType" use="required">
+		
+		<xsd:attribute name="TYPE" type="NESubType" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Type of the tag to classify what kind of information tag contains.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="SUBTYPE" type="xsd:string" use="optional">
-			<xsd:annotation>
-				<xsd:documentation>Subtype helps to clarify the function of the tag information, especially in case of usage of type='OTHER'.</xsd:documentation>
+				<xsd:documentation>Subtype helps to clarify the function of the NE information.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="LABEL" use="required">
@@ -800,13 +799,131 @@
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
-	<xsd:simpleType name="TagsTypeType">
+	<xsd:complexType name="LayoutType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+                                                The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+                                        </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="StructureType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+                                                The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+                                        </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="RoleType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+                                                The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+                                        </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		
+		
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="OtherType">
+		<xsd:sequence>
+			<xsd:element name="Extension" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation xml:lang="en">
+                                                The xml data wrapper element &lt;xmlData&gt; is used to contain XML encoded metadata. The content of an &lt;xmlData&gt; element can be in any namespace or in no namespace. As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;xmlData&gt; is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute, then an XML processor will validate the elements for which it can find declarations. If a source schema is not identified, or cannot be found at the specified schemaLocation, then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;xmlData&gt; element.
+                                        </xsd:documentation>
+				</xsd:annotation>
+				<xsd:complexType>
+					<xsd:sequence>
+						<xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+					</xsd:sequence>
+				</xsd:complexType>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+		
+		<xsd:attribute name="TYPE" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Subtype helps to clarify the function of the NE information.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="LABEL" use="required">
+			<xsd:annotation>
+				<xsd:documentation>Content of the tag</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="DESCRIPTION" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Description text to be shown to a user.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:simpleType name="NESubType">
 		<xsd:restriction base="xsd:string">
-			<xsd:enumeration value="STRUCTURE"/>
-			<xsd:enumeration value="LAYOUT"/>
-			<xsd:enumeration value="NAMED-ENTITY"/>
-			<xsd:enumeration value="ROLE"/>
-			<xsd:enumeration value="OTHER"/>
+			<xsd:enumeration value="Person"/>
+			<xsd:enumeration value="Location"/>
+			<xsd:enumeration value="Organization"/>
+			<xsd:enumeration value="Other"/>
 		</xsd:restriction>
-	</xsd:simpleType> 
+	</xsd:simpleType>
+	
 </xsd:schema>
