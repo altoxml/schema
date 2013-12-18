@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <alto xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
  xmlns="http://www.loc.gov/standards/alto/ns-v2#" 
- xsi:schemaLocation="http://www.loc.gov/standards/alto/ns-v2# altov21-draft.xsd">
+ xsi:schemaLocation="http://www.loc.gov/standards/alto/ns-v2# alto-2-1-draft.xsd">
 
 	<Description>
 		<MeasurementUnit>inch1200</MeasurementUnit>
