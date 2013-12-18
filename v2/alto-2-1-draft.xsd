@@ -3,8 +3,17 @@
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 <!-- Version 2.1 DRAFT -->
-<!-- November 18, 2013 -->
+
 <!-- Change History -->
+<!-- December 18, 2013:
+	1. Page and BlockType element HEIGHT, WIDTH, HPOS, VPOS attribute types changed to xsd:float from xsd:int.
+	2. CircleType  HPOS, VPOS and RADIUS attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
+	3. EllipseType HPOS,VPOS,HLENGTH and VLENGTH attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
+	4. MeasurementUnit defined as mandatory and element annotation clarified.
+	5. HYP element's CONTENT attribute type definition added as xsd:string.
+	7. CS attribute added to String
+-->
+
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
 <!-- November 19, 2004: Modifications requested by Justin Littman -->
 <!-- Modifications of November 19, 2004: 
@@ -75,9 +84,9 @@
 					</xsd:annotation>
 					<xsd:complexType>
 						<xsd:sequence>
-							<xsd:element name="MeasurementUnit" minOccurs="0">
+							<xsd:element name="MeasurementUnit" minOccurs="1">
 								<xsd:annotation>
-									<xsd:documentation>All measurement values inside the alto file except fontsize
+									<xsd:documentation>All measurement values inside the alto file except font size
 										are related to this unit. 
 										The values for pixel will be related to the resolution of the image based
 										on which the layout is described. In case the original image is not known
@@ -461,7 +470,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
-			<xsd:documentation>An ellipse shape. The point described is the center of the shape.
+			<xsd:documentation>An ellipse shape. HPOS and VPOS describe the center of the ellipse.
                                 HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
@@ -471,7 +480,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="CircleType">
 		<xsd:annotation>
-			<xsd:documentation>A circle shape. HPOS and VPOS describe there the center of the circle.</xsd:documentation>
+			<xsd:documentation>A circle shape. HPOS and VPOS describe the center of the circle.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
@@ -796,7 +805,7 @@
     </xsd:attribute>
     <xsd:attribute name="LABEL" type="xsd:string" use="required">
       <xsd:annotation>
-        <xsd:documentation>Content / informaiton value of the tag</xsd:documentation>
+        <xsd:documentation>Content / information value of the tag</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
     <xsd:attribute name="DESCRIPTION" type="xsd:string" use="optional">
