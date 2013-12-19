@@ -5,13 +5,13 @@ Latest official schema v2.0:
 * Alternate [https://raw.github.com/altoxml/schema/master/alto-v2.0.xsd](https://raw.github.com/altoxml/schema/master/alto-v2.0.xsd)
 
 
-Version overview:
+# Version overview:
 
 
-Version 2.x
+**Version 2.x**
 
 
-Version 1.x
+**Version 1.x**
 
 
 
