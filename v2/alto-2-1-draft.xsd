@@ -422,7 +422,7 @@
 		</xsd:attribute>
 		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. Correction status should be recorded at the highest level possible.</xsd:documentation>
+				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not.  If the whole line has been edited, the CS attribute must be set on the TextLine element only (not on the String level).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="LANG" type="xsd:language" use="optional">
