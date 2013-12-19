@@ -5,15 +5,6 @@
 <!-- Version 2.1 DRAFT -->
 
 <!-- Change History -->
-<!-- December 18, 2013:
-	1. Page and BlockType element HEIGHT, WIDTH, HPOS, VPOS attribute types changed to xsd:float from xsd:int.
-	2. CircleType  HPOS, VPOS and RADIUS attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
-	3. EllipseType HPOS,VPOS,HLENGTH and VLENGTH attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
-	4. MeasurementUnit defined as mandatory and element annotation clarified.
-	5. HYP element's CONTENT attribute type definition added as xsd:string.
-	7. CS attribute added to String
--->
-
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
 <!-- November 19, 2004: Modifications requested by Justin Littman -->
 <!-- Modifications of November 19, 2004: 
@@ -57,14 +48,17 @@
 <!-- Modifications of January 11, 2010:
 	1.  Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of the previous change note of August 7, 2009.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes that extended the 1.4 model prior to editorial board approval. 
 -->
-<!-- Modifications of November 28, 2013 by ALTO board:
-	1.  
-	2.  
-	3.  
-	4.  
-	5.  
-	6.  
+<!-- December 18, 2013, ALTO board version 2.1 draft:
+	1. Page and BlockType element HEIGHT, WIDTH, HPOS, VPOS attribute types changed to xsd:float from xsd:int.
+	2. CircleType  HPOS, VPOS and RADIUS attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
+	3. EllipseType HPOS,VPOS,HLENGTH and VLENGTH attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
+	4. MeasurementUnit defined as mandatory and element annotation clarified.
+	5. HYP element's CONTENT attribute type definition added as xsd:string.
+	6. Tags (LayoutTag/StructureTag/RoleTag/NamedEntityTag/OtherTag) added to allow for tagging content. TAGREFS attribute added to BlockTypes, TextLine and String
+	7. CS attribute added to String
+	8. LANG attribute added to String, TextLine and TextBlock. language attribute in TextBlock deprected.
 -->
+
 <xsd:schema targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" attributeFormDefault="unqualified">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto">
@@ -178,7 +172,7 @@
 				</xsd:element>
 				<xsd:element name="Tags" type="TagsType">
 					<xsd:annotation>
-						<xsd:documentation>TODO</xsd:documentation>
+						<xsd:documentation>Container element for LayoutTags, StructureTags, RoleTags, NamedEntityTags and OtherTags</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
 				<xsd:element name="Layout">
