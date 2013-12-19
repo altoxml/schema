@@ -348,6 +348,11 @@
 				<xsd:documentation>The next block in reading sequence on the page.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
+		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. The correction status should be recorded at the highest level possible (Block, TextLine, String).</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
 		<xsd:attributeGroup ref="xlink:simpleLink"/>
 	</xsd:complexType>
 	<xsd:complexType name="StringType" mixed="false">
@@ -422,7 +427,7 @@
 		</xsd:attribute>
 		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not.  If the whole line has been edited, the CS attribute must be set on the TextLine element only (not on the String level).</xsd:documentation>
+				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. The correction status should be recorded at the highest level possible. (Block, TextLine, String).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="LANG" type="xsd:language" use="optional">
@@ -737,14 +742,14 @@
 							<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 							<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
 							<xsd:attribute name="BASELINE" type="xsd:float" use="optional"/>
-							<xsd:attribute name="CS" type="xsd:boolean" use="optional">
-								<xsd:annotation>
-									<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not.</xsd:documentation>
-								</xsd:annotation>
-							</xsd:attribute>
 							<xsd:attribute name="LANG" type="xsd:language" use="optional">
 								<xsd:annotation>
 									<xsd:documentation>Attribute to record language of the textline.</xsd:documentation>
+								</xsd:annotation>
+							</xsd:attribute>
+							<xsd:attribute name="CS" type="xsd:boolean" use="optional">
+								<xsd:annotation>
+									<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. The correction status should be recorded at the highest level possible. (Block, TextLine, String)</xsd:documentation>
 								</xsd:annotation>
 							</xsd:attribute>
 						</xsd:complexType>
