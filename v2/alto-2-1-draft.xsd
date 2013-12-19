@@ -420,6 +420,11 @@
 				<xsd:documentation>Confidence level of each character in that string. A list of numbers, one number between 0 (sure) and 9 (unsure) for each character.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
+		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. Correction status should be recorded at the highest level possible.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
 		<xsd:attribute name="LANG" type="xsd:language" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Attribute to record language of the string. The language should be recorded at the highest level possible.</xsd:documentation>
