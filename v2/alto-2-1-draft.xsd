@@ -819,7 +819,7 @@
     </xsd:attribute>
     <xsd:attribute name="URI" type="xsd:anyURI" use="optional">
       <xsd:annotation>
-        <xsd:documentation>Any authority URI relevant for the tagged NE.</xsd:documentation>
+        <xsd:documentation>Any authority URI relevant for the tag element.</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
   </xsd:complexType>	
