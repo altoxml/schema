@@ -80,16 +80,21 @@
 						<xsd:sequence>
 							<xsd:element name="MeasurementUnit" minOccurs="1">
 								<xsd:annotation>
-									<xsd:documentation>All measurement values inside the alto file except font size
-										are related to this unit. 
-										The values for pixel will be related to the resolution of the image based
-										on which the layout is described. In case the original image is not known
-										the scaling factor can be calculated based on total width and height of
-										the image and the according information of the PAGE element.
-										pixel: 1 pixel
-										mm10: 1/10 of millimeter
-										inch1200: 1/1200 of inch</xsd:documentation>
-								</xsd:annotation>
+									<xsd:documentation>
+										All measurement values inside the alto file are related to 
+										this unit, except the font size.
+										Coordinates as being used in HPOS and VPOS are absolute coordinates referring to the upper-left corner of a page.
+										The upper left corner of the page is defined as coordinate (0/0). 
+
+										values meaning:
+										  mm10: 1/10th of millimeter
+										  inch1200: 1/1200th of inch 
+										  pixel: 1 pixel
+										
+										The values for pixel will be related to the resolution of the image based 
+										on which the layout is described. Incase the original image is not known
+										the scaling factor can be calculated based on total width and height of 
+										the image and the according information of the PAGE element.								</xsd:annotation>
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:enumeration value="pixel"/>
