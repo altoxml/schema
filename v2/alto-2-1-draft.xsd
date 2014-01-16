@@ -94,7 +94,9 @@
 										The values for pixel will be related to the resolution of the image based 
 										on which the layout is described. Incase the original image is not known
 										the scaling factor can be calculated based on total width and height of 
-										the image and the according information of the PAGE element.								</xsd:annotation>
+										the image and the according information of the PAGE element.
+										</xsd:documentation>	
+									</xsd:annotation>
 								<xsd:simpleType>
 									<xsd:restriction base="xsd:string">
 										<xsd:enumeration value="pixel"/>
