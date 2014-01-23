@@ -179,7 +179,10 @@
 				</xsd:element>
 				<xsd:element name="Tags" type="TagsType" minOccurs="0">
 					<xsd:annotation>
-						<xsd:documentation>Container element for LayoutTags, StructureTags, RoleTags, NamedEntityTags and OtherTags</xsd:documentation>
+						<xsd:documentation>
+							Tag define properties of additional characteristic. The tags are referenced from related content element on Block or String element by attribute TAGREF via the tag ID.
+							This container element contains the individual elements for LayoutTags, StructureTags, RoleTags, NamedEntityTags and OtherTags
+						</xsd:documentation>
 					</xsd:annotation>
 				</xsd:element>
 				<xsd:element name="Layout">
@@ -775,59 +778,72 @@
 			</xsd:extension>
 		</xsd:complexContent>
 	</xsd:complexType>
-  <xsd:complexType name="TagsType">
-    <xsd:sequence>
-      <xsd:choice minOccurs="0" maxOccurs="unbounded">
-        <xsd:element name="LayoutTag" type="TagType"/>
-        <xsd:element name="StructureTag" type="TagType"/>
-        <xsd:element name="RoleTag" type="TagType"/>
-        <xsd:element name="NamedEntityTag" type="TagType"/>
-        <xsd:element name="OtherTag" type="TagType"/>
-      </xsd:choice>
-    </xsd:sequence>
-  </xsd:complexType>
-  <!-- base type for all tag elements-->
-  <xsd:complexType name="TagType">
-    <xsd:sequence>
-      <xsd:element name="XmlData" minOccurs="0">
-        <xsd:annotation>
-          <xsd:documentation xml:lang="en">
-            The xml data wrapper element &lt;XmlData&gt; is used to contain XML encoded metadata.
-            The content of an &lt;XmlData&gt; element can be in any namespace or in no namespace.
-            As permitted by the XML Schema Standard, the processContents attribute value for the metadata in an &lt;XmlData&gt;
-            is set to “lax”. Therefore, if the source schema and its location are identified by means of an XML schemaLocation attribute,
-            then an XML processor will validate the elements for which it can find declarations.
-            If a source schema is not identified, or cannot be found at the specified schemaLocation,
-            then an XML validator will check for well-formedness, but otherwise skip over the elements appearing in the &lt;XmlData&gt; element.
-          </xsd:documentation>
-        </xsd:annotation>
-        <xsd:complexType>
-          <xsd:sequence>
-            <xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
-          </xsd:sequence>
-        </xsd:complexType>
-      </xsd:element>
-    </xsd:sequence>
-    <xsd:attribute name="ID" type="xsd:ID" use="required"/>
-    <xsd:attribute name="TYPE" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation>Type helps to classify the named-entity information.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="LABEL" type="xsd:string" use="required">
-      <xsd:annotation>
-        <xsd:documentation>Content / information value of the tag</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="DESCRIPTION" type="xsd:string" use="optional">
-      <xsd:annotation>
-        <xsd:documentation>Description text to be shown to a user.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-    <xsd:attribute name="URI" type="xsd:anyURI" use="optional">
-      <xsd:annotation>
-        <xsd:documentation>Any authority URI relevant for the tag element.</xsd:documentation>
-      </xsd:annotation>
-    </xsd:attribute>
-  </xsd:complexType>
+	<xsd:complexType name="TagsType">
+		<xsd:annotation>
+			<xsd:documentation>
+				There are following variation of tag types available:
+				LayoutTag – criteria about arrangement or graphical appearance
+				StructureTag – criteria about grouping or formation
+				RoleTag – criteria about function or mission
+				NamedEntityTag – criteria about assignment of terms to their relationship / meaning (NER)
+				OtherTag – criteria about any other characteristic not listed above, the TYPE attribute is intended to be used for classification within those.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+	    <xsd:choice minOccurs="0" maxOccurs="unbounded">
+	      <xsd:element name="LayoutTag" type="TagType"/>
+	      <xsd:element name="StructureTag" type="TagType"/>
+	      <xsd:element name="RoleTag" type="TagType"/>
+	      <xsd:element name="NamedEntityTag" type="TagType"/>
+	      <xsd:element name="OtherTag" type="TagType"/>
+	    </xsd:choice>
+	  </xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="TagType">
+	  <xsd:sequence>
+	    <xsd:element name="XmlData" minOccurs="0">
+	      <xsd:annotation>
+	        <xsd:documentation xml:lang="en">
+	          The xml data wrapper element XmlData is used to contain XML encoded metadata.
+	          The content of an XmlData element can be in any namespace or in no namespace.
+	          As permitted by the XML Schema Standard, the processContents attribute value for the
+	          metadata in an XmlData is set to “lax”. Therefore, if the source schema and its location are
+	          identified by means of an XML schemaLocation attribute, then an XML processor will validate
+	          the elements for which it can find declarations. If a source schema is not identified, or cannot be
+	          found at the specified schemaLocation, then an XML validator will check for well-formedness,
+	          but otherwise skip over the elements appearing in the XmlData element.
+	        </xsd:documentation>
+	      </xsd:annotation>
+	      <xsd:complexType>
+	        <xsd:sequence>
+	          <xsd:any namespace="##any" processContents="lax" maxOccurs="unbounded"/>
+	        </xsd:sequence>
+	      </xsd:complexType>
+	    </xsd:element>
+	  </xsd:sequence>
+	  <xsd:attribute name="ID" type="xsd:ID" use="required"/>
+	  <xsd:attribute name="TYPE" type="xsd:string" use="optional">
+	    <xsd:annotation>
+	      <xsd:documentation>Type can be used to classify and group the information within each tag
+	        element type.
+	      </xsd:documentation>
+	    </xsd:annotation>
+	  </xsd:attribute>
+	  <xsd:attribute name="LABEL" type="xsd:string" use="required">
+	    <xsd:annotation>
+	      <xsd:documentation>Content / information value of the tag.</xsd:documentation>
+	    </xsd:annotation>
+	  </xsd:attribute>
+	  <xsd:attribute name="DESCRIPTION" type="xsd:string" use="optional">
+	    <xsd:annotation>
+	      <xsd:documentation>Description text for tag information for clarification.</xsd:documentation>
+	    </xsd:annotation>
+	  </xsd:attribute>
+	  <xsd:attribute name="URI" type="xsd:anyURI" use="optional">
+	    <xsd:annotation>
+	      <xsd:documentation>Any URI for authority or description relevant information.
+	      </xsd:documentation>
+	    </xsd:annotation>
+	  </xsd:attribute>
+	</xsd:complexType>
 </xsd:schema>
