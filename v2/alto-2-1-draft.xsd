@@ -829,7 +829,5 @@
         <xsd:documentation>Any authority URI relevant for the tag element.</xsd:documentation>
       </xsd:annotation>
     </xsd:attribute>
-  </xsd:complexType>	
-
-
+  </xsd:complexType>
 </xsd:schema>
