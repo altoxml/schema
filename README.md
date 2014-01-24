@@ -7,7 +7,8 @@ Latest official schema v2.0:
 Version 2.1 Draft
 * Primary [http://www.loc.gov/standards/alto/v2/alto-2-1-draft.xsd](http://www.loc.gov/standards/alto/v2/alto-2-1-draft.xsd)
 * Alternate [https://raw2.github.com/altoxml/schema/master/v2/alto-2-1-draft.xsd](https://raw2.github.com/altoxml/schema/master/v2/alto-2-1-draft.xsd)
-* [Summary of changes] (https://github.com/altoxml/documentation/wiki/v2.1-Draft) 
+* [Summary of changes] (https://github.com/altoxml/documentation/wiki/v2.1-Draft)
+* [Leave a comment about v2.1 Draft] (https://github.com/altoxml/schema/issues/new) - Requires GitHub account
 
 
 
