@@ -56,7 +56,8 @@
 	5. HYP element's CONTENT attribute type definition added as xsd:string.
 	6. Tags (LayoutTag/StructureTag/RoleTag/NamedEntityTag/OtherTag) added to allow for tagging content. TAGREFS attribute added to BlockTypes, TextLine and String
 	7. CS attribute added to String and Block
-	8. LANG attribute added to String, TextLine and TextBlock. language attribute in TextBlock deprected.
+	8. LANG attribute added to String, TextLine and TextBlock. "language" attribute in TextBlock deprected.
+	9. HEIGHT attribute added to HYP and SP elements
 -->
 
 <xsd:schema targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" elementFormDefault="qualified" attributeFormDefault="unqualified">
