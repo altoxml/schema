@@ -2,7 +2,7 @@
 <!-- ALTO: Analyzed Layout and Text Object  -->
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
-<!-- Version 2.1 DRAFT -->
+<!-- Version 2.1 -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -48,7 +48,7 @@
 <!-- Modifications of January 11, 2010:
 	1.  Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of the previous change note of August 7, 2009.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes that extended the 1.4 model prior to editorial board approval. 
 -->
-<!-- December 18, 2013, ALTO board version 2.1 draft:
+<!-- February 20, 2014, version 2.1:
 	1. Page and BlockType element HEIGHT, WIDTH, HPOS, VPOS attribute types changed to xsd:float from xsd:int.
 	2. CircleType  HPOS, VPOS and RADIUS attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
 	3. EllipseType HPOS,VPOS,HLENGTH and VLENGTH attribute type definitions added as xsd:float and made mandatory. Element annotation clarified.
