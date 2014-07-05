@@ -62,7 +62,7 @@
 	1. Anonymous types changed to named types (to allow use of xsd:redefine mechanism)
 		
 -->
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" elementFormDefault="qualified" attributeFormDefault="unqualified">
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
@@ -100,6 +100,11 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
+		<xsd:attribute name="schemaversion" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Schema version of the ALTO file.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
 	</xsd:complexType>
 	<xsd:complexType name="DescriptionType">
 		<xsd:sequence>
