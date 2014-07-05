@@ -62,6 +62,12 @@
 	1. Anonymous types changed to named types (to allow use of xsd:redefine mechanism)
 		
 -->
+
+<!-- July 2014, version 2.2 DRAFT
+	1. Version added to xsd:schema.
+	2. Schemaversion attribute added to <alto>.
+
+-->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
