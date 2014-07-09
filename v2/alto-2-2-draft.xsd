@@ -155,117 +155,115 @@
 			</xsd:choice>
 		</xsd:sequence>
 	</xsd:complexType>
+	<xsd:simpleType name="QualityType">
+		<xsd:annotation>
+			<xsd:documentation>Gives brief information about original page quality</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="OK"/>
+			<xsd:enumeration value="Missing"/>
+			<xsd:enumeration value="Missing in original"/>
+			<xsd:enumeration value="Damaged"/>
+			<xsd:enumeration value="Retained"/>
+			<xsd:enumeration value="Target"/>
+			<xsd:enumeration value="As in original"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="QualityDetailType">
+		<xsd:annotation>
+			<xsd:documentation>Gives more details about the original page quality, since QUALITY attribute gives only brief and restrictive information</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="PositionType">
+		<xsd:annotation>
+			<xsd:documentation>Position of the page. Could be lefthanded, righthanded, cover, foldout or single if it has no special position.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:string">
+			<xsd:enumeration value="Left"/>
+			<xsd:enumeration value="Right"/>
+			<xsd:enumeration value="Foldout"/>
+			<xsd:enumeration value="Single"/>
+			<xsd:enumeration value="Cover"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:simpleType name="PCType">
+		<xsd:annotation>
+			<xsd:documentation>Page Confidence: Confidence level of the ocr for this page. A value between 0 (unsure) and 1 (sure).  </xsd:documentation>
+		</xsd:annotation>
+		<xsd:restriction base="xsd:float">
+			<xsd:minInclusive value="0"/>
+			<xsd:maxInclusive value="1"/>
+		</xsd:restriction>
+	</xsd:simpleType>
+	<xsd:complexType name="PageType">
+		<xsd:annotation>
+			<xsd:documentation>One page of a book or journal.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="TopMargin" type="PageSpaceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The area between the top line of print and the upper edge of the leaf. It may contain page number or running title.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="LeftMargin" type="PageSpaceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The area between the printspace and the left border of a page. May contain margin notes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="RightMargin" type="PageSpaceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The area between the printspace and the right border of a page. May contain margin notes.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="BottomMargin" type="PageSpaceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>The area between the bottom line of letterpress or writing and the bottom edge of the leaf. It may contain a page number, a signature number or a catch word.</xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+			<xsd:element name="PrintSpace" type="PageSpaceType" minOccurs="0">
+				<xsd:annotation>
+					<xsd:documentation>Rectangle covering the printed area of a page. Page number and running title are not part of the print space. </xsd:documentation>
+				</xsd:annotation>
+			</xsd:element>
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="PageID" use="required"/>
+		<xsd:attribute name="PAGECLASS" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Any user-defined class like title page.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+		<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:float" use="required">
+			<xsd:annotation>
+				<xsd:documentation>The number of the page within the document.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="PRINTED_IMG_NR" type="xsd:string" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>The page number that is printed on the page.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="QUALITY" type="QualityType" use="optional"/>
+		<xsd:attribute name="QUALITY_DETAIL" type="QualityDetailType" use="optional"/>
+		<xsd:attribute name="POSITION" type="PositionType" use="optional"/>
+		<xsd:attribute name="PROCESSING" type="xsd:IDREF" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>A link to the processing description that has been used for this page.</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="ACCURACY" type="xsd:float" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>Estimated percentage of OCR Accuracy in range from 0 to 100 </xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="PC" type="PCType" use="optional"/>
+	</xsd:complexType>
 	<xsd:complexType name="LayoutType">
 		<xsd:sequence>
-			<xsd:element name="Page" maxOccurs="unbounded">
-				<xsd:annotation>
-					<xsd:documentation>One page of a book or journal.</xsd:documentation>
-				</xsd:annotation>
-				<xsd:complexType>
-					<xsd:sequence>
-						<xsd:element name="TopMargin" type="PageSpaceType" minOccurs="0">
-							<xsd:annotation>
-								<xsd:documentation>The area between the top line of print and the upper edge of the leaf. It may contain page number or running title.</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="LeftMargin" type="PageSpaceType" minOccurs="0">
-							<xsd:annotation>
-								<xsd:documentation>The area between the printspace and the left border of a page. May contain margin notes.</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="RightMargin" type="PageSpaceType" minOccurs="0">
-							<xsd:annotation>
-								<xsd:documentation>The area between the printspace and the right border of a page. May contain margin notes.</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="BottomMargin" type="PageSpaceType" minOccurs="0">
-							<xsd:annotation>
-								<xsd:documentation>The area between the bottom line of letterpress or writing and the bottom edge of the leaf. It may contain a page number, a signature number or a catch word.</xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-						<xsd:element name="PrintSpace" type="PageSpaceType" minOccurs="0">
-							<xsd:annotation>
-								<xsd:documentation>Rectangle covering the printed area of a page. Page number and running title are not part of the print space. </xsd:documentation>
-							</xsd:annotation>
-						</xsd:element>
-					</xsd:sequence>
-					<xsd:attribute name="ID" type="PageID" use="required"/>
-					<xsd:attribute name="PAGECLASS" type="xsd:string" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Any user-defined class like title page.</xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
-					<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
-					<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
-					<xsd:attribute name="PHYSICAL_IMG_NR" type="xsd:float" use="required">
-						<xsd:annotation>
-							<xsd:documentation>The number of the page within the document.</xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="PRINTED_IMG_NR" type="xsd:string" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>The page number that is printed on the page.</xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="QUALITY" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Gives brief information about original page quality</xsd:documentation>
-						</xsd:annotation>
-						<xsd:simpleType>
-							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="OK"/>
-								<xsd:enumeration value="Missing"/>
-								<xsd:enumeration value="Missing in original"/>
-								<xsd:enumeration value="Damaged"/>
-								<xsd:enumeration value="Retained"/>
-								<xsd:enumeration value="Target"/>
-								<xsd:enumeration value="As in original"/>
-							</xsd:restriction>
-						</xsd:simpleType>
-					</xsd:attribute>
-					<xsd:attribute name="QUALITY_DETAIL" type="xsd:string" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Gives more details about the original page quality, since QUALITY attribute gives only brief and restrictive information</xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="POSITION" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Position of the page. Could be lefthanded, righthanded, cover, foldout or single if it has no special position.</xsd:documentation>
-						</xsd:annotation>
-						<xsd:simpleType>
-							<xsd:restriction base="xsd:string">
-								<xsd:enumeration value="Left"/>
-								<xsd:enumeration value="Right"/>
-								<xsd:enumeration value="Foldout"/>
-								<xsd:enumeration value="Single"/>
-								<xsd:enumeration value="Cover"/>
-							</xsd:restriction>
-						</xsd:simpleType>
-					</xsd:attribute>
-					<xsd:attribute name="PROCESSING" type="xsd:IDREF" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>A link to the processing description that has been used for this page.</xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="ACCURACY" type="xsd:float" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Estimated percentage of OCR Accuracy in range from 0 to 100 </xsd:documentation>
-						</xsd:annotation>
-					</xsd:attribute>
-					<xsd:attribute name="PC" use="optional">
-						<xsd:annotation>
-							<xsd:documentation>Page Confidence: Confidence level of the ocr for this page. A value between 0 (unsure) and 1 (sure).  </xsd:documentation>
-						</xsd:annotation>
-						<xsd:simpleType>
-							<xsd:restriction base="xsd:float">
-								<xsd:minInclusive value="0"/>
-								<xsd:maxInclusive value="1"/>
-							</xsd:restriction>
-						</xsd:simpleType>
-					</xsd:attribute>
-				</xsd:complexType>
-			</xsd:element>
+			<xsd:element name="Page" type="PageType" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS"/>
 	</xsd:complexType>
@@ -576,9 +574,7 @@
 			<xsd:enumeration value="fixed"/>
 		</xsd:restriction>
 	</xsd:simpleType>
-	<xsd:simpleType name="fileNameType">
-		<xsd:restriction base="xsd:string"/>
-	</xsd:simpleType>
+	
 	<xsd:simpleType name="MeasurementUnitType">
 		<xsd:annotation>
 			<xsd:documentation>
@@ -613,14 +609,46 @@
 			<xsd:element name="fileIdentifier" type="fileIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
+	<xsd:simpleType name="fileNameType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="fileIdentifierValueType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="fileIdentifierLocationValueType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
 	<xsd:complexType name="fileIdentifierType">
 		<xsd:annotation>
 			<xsd:documentation>A unique identifier for the image file. This is drawn from MIX.</xsd:documentation>
-			<xsd:documentation> This identifier must be unique within the local system. To facilitate file sharing or interoperability with other systems, fileIdentifierLocation may be added to designate the system or application where the identifier is unique.</xsd:documentation>
+			<xsd:documentation> This identifier must be unique within the local system. 
+			To facilitate file sharing or interoperability with other systems, fileIdentifierLocation may be added to designate the system or application where the identifier is unique.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:simpleContent>
-			<xsd:extension base="xsd:string">
-				<xsd:attribute name="fileIdentifierLocation">
+			<xsd:extension base="fileIdentifierValueType">
+				<xsd:attribute name="fileIdentifierLocation" type="fileIdentifierLocationValueType">
+					<xsd:annotation>
+						<xsd:documentation>A location qualifier, i.e., a namespace.</xsd:documentation>
+					</xsd:annotation>
+				</xsd:attribute>
+			</xsd:extension>
+		</xsd:simpleContent>
+	</xsd:complexType>
+	<xsd:simpleType name="documentIdentifierValueType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:simpleType name="documentIdentifierLocationValueType">
+		<xsd:restriction base="xsd:string"/>
+	</xsd:simpleType>
+	<xsd:complexType name="documentIdentifierType">
+		<xsd:annotation>
+			<xsd:documentation>A unique identifier for the document.</xsd:documentation>
+			<xsd:documentation> This identifier must be unique within the local system. 
+			To facilitate file sharing or interoperability with other systems, documentIdentifierLocation may be added to designate the system or application where the identifier is unique.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:simpleContent>
+			<xsd:extension base="documentIdentifierValueType">
+				<xsd:attribute name="documentIdentifierLocation" type="documentIdentifierLocationValueType">
 					<xsd:annotation>
 						<xsd:documentation>A location qualifier, i.e., a namespace.</xsd:documentation>
 					</xsd:annotation>
