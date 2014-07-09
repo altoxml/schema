@@ -107,7 +107,7 @@
 				</xsd:annotation>
 			</xsd:element>
 		</xsd:sequence>
-		<xsd:attribute name="SCHEMAVERSION type="xsd:string" use="optional">
+		<xsd:attribute name="SCHEMAVERSION" type="xsd:string" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Schema version of the ALTO file.</xsd:documentation>
 			</xsd:annotation>
@@ -607,6 +607,7 @@
 		<xsd:sequence>
 			<xsd:element name="fileName" type="fileNameType" minOccurs="0"/>
 			<xsd:element name="fileIdentifier" type="fileIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		        <xsd:element name="documentIdentifier" type="documentIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:simpleType name="fileNameType">
