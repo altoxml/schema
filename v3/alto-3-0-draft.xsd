@@ -69,7 +69,14 @@
 	3. documentIdentifier element added to <sourceImageInformationType> element (+ documentIdentifierLocation attribute)
 
 -->
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v2#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v2#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="2.2">
+
+<!-- August 2014, version 3.0 DRAFT
+	1. Changed namespace and targetNamespace to http://www.loc.gov/standards/alto/ns-v3#
+	2. Changed schema version to 3.0 
+
+-->
+
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
