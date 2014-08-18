@@ -70,9 +70,12 @@
 
 -->
 
-<!-- August 2014, version 3.0 DRAFT
+<!-- August 2014, version 3.0
 	1. Changed namespace and targetNamespace to http://www.loc.gov/standards/alto/ns-v3#
 	2. Changed schema version to 3.0 
+
+	ALTO schemas will be updated by whole numbers upon making changes that break backward compatibility (version 1 to version 2), 
+	and decimals for changes that will not (2.0 to 2.1). The namespace itself will also only change on major versions (ns-v2 to ns-v3). 
 
 -->
 
