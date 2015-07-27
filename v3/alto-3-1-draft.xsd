@@ -76,7 +76,6 @@
 
 	ALTO schemas will be updated by whole numbers upon making changes that break backward compatibility (version 1 to version 2), 
 	and decimals for changes that will not (2.0 to 2.1). The namespace itself will also only change on major versions (ns-v2 to ns-v3). 
-
 -->
 
 <!-- July 2015, version 3.1
@@ -85,7 +84,7 @@
     3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
 
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.0">
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.1">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
@@ -387,13 +386,13 @@
 		<xsd:attribute name="ID" type="BlockTypeID" use="required"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS"/>
 		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
-		<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
-		<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
-		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
-		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
 		<xsd:attribute name="ROTATION" type="xsd:float" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Tells the rotation of the block e.g. text or illustration. The value is in degree counterclockwise.</xsd:documentation>
+				<xsd:documentation>Tells the rotation of e.g. text or illustration within the block. The value is in degree counterclockwise.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="IDNEXT" type="xsd:IDREF" use="optional">
@@ -461,7 +460,8 @@
 			<xsd:documentation>A sequence of chars. Strings are separated by white spaces or hyphenation chars.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence minOccurs="0">
-			<xsd:element name="ALTERNATIVE" type="ALTERNATIVEType" maxOccurs="unbounded"/>
+			<xsd:element name="Shape" type="ShapeType" minOccurs="0" maxOccurs="1"/>
+			<xsd:element name="ALTERNATIVE" type="ALTERNATIVEType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="StringTypeID" use="optional"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
@@ -500,14 +500,15 @@
 			<xsd:documentation>A region on a page</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+			<xsd:element name="Shape" type="ShapeType" minOccurs="0"  maxOccurs="1"/>
 			<xsd:group ref="BlockGroup"/>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="PageSpaceTypeID" use="optional"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
-		<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
-		<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
-		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
-		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
 	</xsd:complexType>
 	<xsd:simpleType name="PointsType">
 		<xsd:annotation>
@@ -535,11 +536,14 @@
 		<xsd:annotation>
 			<xsd:documentation>An ellipse shape. HPOS and VPOS describe the center of the ellipse.
                                 HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
+			<xsd:documentation>The attribute ROTATION tells the rotation of the e.g. text or 
+				               illustration within the block. The value is in degrees counterclockwise. </xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="HLENGTH" type="xsd:float" use="required"/>
 		<xsd:attribute name="VLENGTH" type="xsd:float" use="required"/>
+		<xsd:attribute name="ROTATION" type="xsd:float" use="optional"/>
 	</xsd:complexType>
 	<xsd:complexType name="CircleType">
 		<xsd:annotation>
@@ -827,6 +831,7 @@
 						<xsd:complexType>
 							<xsd:sequence>
 								<xsd:sequence maxOccurs="unbounded">
+									<xsd:element name="Shape" type="ShapeType" minOccurs="0" maxOccurs="1"/>
 									<xsd:element name="String" type="StringType"/>
 									<xsd:element name="SP" type="SPType" minOccurs="0"/>
 								</xsd:sequence>
@@ -846,10 +851,10 @@
 							<xsd:attribute name="ID" type="TextLineID"/>
 							<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
 							<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
-							<xsd:attribute name="HEIGHT" type="xsd:float" use="required"/>
-							<xsd:attribute name="WIDTH" type="xsd:float" use="required"/>
-							<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
-							<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
+							<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+							<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+							<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
+							<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
 							<xsd:attribute name="BASELINE" type="xsd:float" use="optional"/>
 							<xsd:attribute name="LANG" type="xsd:language" use="optional">
 								<xsd:annotation>
