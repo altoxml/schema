@@ -2,7 +2,9 @@
 <!-- ALTO: Analyzed Layout and Text Object  -->
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
-<!-- Version 3.0 DRAFT -->
+
+<!-- Version 3.1 -->
+
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
 <!-- November 19, 2004: Modifications requested by Justin Littman -->
@@ -78,7 +80,7 @@
 	and decimals for changes that will not (2.0 to 2.1). The namespace itself will also only change on major versions (ns-v2 to ns-v3). 
 -->
 
-<!-- Januari 2016, version 3.1
+<!-- January 2016, version 3.1
 	1. Changed schema version to 3.1
     2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
     3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
