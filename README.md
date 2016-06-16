@@ -5,9 +5,6 @@ This repository contains following the ALTO schema versions - drafts and final r
 In the [issues](https://github.com/altoxml/schema/issues) all open issues and former discussion about changes on the ALTO standard can be found and tracked.
 Feedback, questions and new requirements can be added here.
 
-Details about the changes of the version and further documentation you will find in the repository
-"[Documentation] (https://github.com/altoxml/documentation/wiki)"
-
 
 Latest official schema version:
 Version 3.1
@@ -18,4 +15,7 @@ Version 3.1
 
 
 Full overview of all previous schema versions can be found at:
-[https://github.com/altoxml/documentation/wiki/Versions](https://github.com/altoxml/documentation/wiki/Versions)
+[https://github.com/altoxml/documentation/wiki/Versions](https://github.com/altoxml/documentation/wiki/Versions)  
+
+Details about the changes of the version and further documentation you will find in the repository
+"[Documentation] (https://github.com/altoxml/documentation/wiki)"
