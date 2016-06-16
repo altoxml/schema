@@ -1,6 +1,7 @@
 # ALTO XML schema
 
 This repository contains following the ALTO schema versions - drafts and final released once.
+
 In the [issues](https://github.com/altoxml/schema/issues) all open issues and former discussion about changes on the ALTO standard can be found and tracked.
 Feedback, questions and new requirements can be added here.
 
