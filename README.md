@@ -18,4 +18,4 @@ Full overview of all previous schema versions can be found at:
 [altoxml / documentation / wiki / Versions](https://github.com/altoxml/documentation/wiki/Versions)  
 
 Details about the changes of the version and further documentation you will find in the repository
-["Documentation"](https://github.com/altoxml/documentation/wiki)"
+["Documentation"](https://github.com/altoxml/documentation/wiki)
