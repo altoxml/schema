@@ -14,6 +14,5 @@ Previous schema version 3.0
 * [Summary of changes] (https://github.com/altoxml/documentation/wiki/v3.0-Changes)
 
 
-[Documentation] (https://github.com/altoxml/documentation/wiki)
-
-[ALTO pages at The Library of Congress] (http://www.loc.gov/standards/alto/) 
+Details about the changes of the version and further documentation you will find in the repository
+"[Documentation] (https://github.com/altoxml/documentation/wiki)"
