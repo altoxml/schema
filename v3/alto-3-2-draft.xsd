@@ -3,7 +3,7 @@
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
-<!-- Version 3.1 -->
+<!-- Version 3.2 DRAFT -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -445,7 +445,13 @@
 	</xsd:simpleType>
 	<xsd:complexType name="ALTERNATIVEType">
 		<xsd:annotation>
-			<xsd:documentation>Any alternative for the word.</xsd:documentation>
+			<xsd:documentation>
+				Any alternative for the word.
+				Alternative can outline a variant of writing by new typing / spelling rules, typically manually done or by dictionary replacements.
+				The above sample is an old composed character "Æ" of ancient time, which is replaced now by "Ä".
+				As variant are ment alternatives of the real printed content which are options outlined by the text recognition process. 
+				Similar sample: "Straße" vs. "Strasse". Such alternatives are not coming from text recognition.
+			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:simpleContent>
 			<xsd:extension base="xsd:string">
@@ -464,6 +470,7 @@
 		<xsd:sequence minOccurs="0">
 			<xsd:element name="Shape" type="ShapeType" minOccurs="0" maxOccurs="1"/>
 			<xsd:element name="ALTERNATIVE" type="ALTERNATIVEType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="Glyph" type="GlyphType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="StringTypeID" use="optional"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
@@ -929,6 +936,110 @@
 				<xsd:documentation>Any URI for authority or description relevant information.
 	      </xsd:documentation>
 			</xsd:annotation>
+		</xsd:attribute>
+	</xsd:complexType>
+	<xsd:complexType name="GlyphType" mixed="false">
+		<xsd:annotation> 
+			<xsd:documentation>
+				Modern OCR software stores information on glyph level. A glyph is essentially a character or ligature.
+				Accordingly the value for the glyph element will be defined as follwed:
+				Precomposed representation = base + combining character(s) (decomposed representation)
+				See http://www.fileformat.info/info/unicode/char/0101/index.htm
+				"U+0101" = (U+0061) + (U+0304)
+				"combining characters" ("base characters" in combination with non-spacing characters which are combined to one) are represented as one "glyph", e.g. áàâ.
+				
+				Each character has its own coordinate information and must be separately addressable as a distinct object.
+				Correction and verification processes can be carried out for individual characters.
+				
+				Post-OCR analysis of the text as well as adaptive OCR algorithm must be able to record information on character level.
+				In order to reproduce the decision of the OCR software, optional characters must be recorded. These are called variants.
+				The OCR software evaluates each variant and picks the one with the highest confidence score as the glyph.
+				The confidence score expresses how confident the OCR software is that a single glyph had been recognized correctly.
+				
+				The glyph elements are in order of the word. Each character need to be recorded to built up the whole word sequence.
+				
+				The glyph’s CONTENT attribute is no replacement for the string’s CONTENT attribute.
+				Due to post-processing steps such as correction the values of both attributes may be inconsistent. 
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence minOccurs="0">
+			<xsd:element name="Shape" type="ShapeType" minOccurs="0"/>
+			<xsd:element name="Variant" type="VariantType" minOccurs="0" maxOccurs="unbounded" />
+		</xsd:sequence>
+		<xsd:attribute name="ID" type="xsd:ID" use="optional"/>
+		<xsd:attribute name="CONTENT" use="required">
+			<xsd:annotation>
+				<xsd:documentation>
+					CONTENT contains the precomposed representation (combining character) of the character from the parent String element.
+					The sequence position of the Gylph element matches the position of the character in the String.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:length fixed="true" value="1"/>
+					<xsd:whiteSpace value="preserve"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="GC" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					This GC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is confident.
+					This attribute is optional. If it is not available, the default value for the variant is “0”.
+					The GC attribute semantic is the same as the WC attribute on the String element and VC on Glyph level.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:float">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="1"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="HEIGHT" type="xsd:float" use="optional"/>
+		<xsd:attribute name="WIDTH" type="xsd:float" use="optional"/>
+		<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
+		<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
+	</xsd:complexType>
+	<xsd:complexType name="VariantType" mixed="false">
+		<xsd:annotation>
+			<xsd:documentation>
+				Alternative (combined) character for the glyth, outlined by OCR engine or similar recognition processes.
+				In case the variant are two (combining) characters, two characters are outlined in one Variant element.
+				E.g. a Glyph element with CONTENT="m" can have a Variant element with the content "rn".
+				Details for different use-cases see on the samples on GitHub.
+			</xsd:documentation>
+		</xsd:annotation>
+		<xsd:attribute name="CONTENT" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					Each Variant represents an option for the glyph that the OCR software detected as possible alternatives.
+					In case the variant are two (combining) characters, two characters are outlined in one Variant element.
+					E.g. a Glyph element with CONTENT="m" can have a Variant element with the content "rn".
+					Details for different use-cases see on the samples on GitHub.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:string">
+					<xsd:maxLength value="3"/>
+					<xsd:whiteSpace value="preserve"/>
+				</xsd:restriction>
+			</xsd:simpleType>
+		</xsd:attribute>
+		<xsd:attribute name="VC" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					This VC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is confident.
+					This attribute is optional. If it is not available, the default value for the variant is “0”.
+					The VC attribute semantic is the same as the GC attribute on the Glyph element.
+				</xsd:documentation>
+			</xsd:annotation>
+			<xsd:simpleType>
+				<xsd:restriction base="xsd:float">
+					<xsd:minInclusive value="0"/>
+					<xsd:maxInclusive value="1"/>
+				</xsd:restriction>
+			</xsd:simpleType>
 		</xsd:attribute>
 	</xsd:complexType>
 </xsd:schema>
