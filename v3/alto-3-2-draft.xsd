@@ -3,7 +3,7 @@
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
-<!-- Version 3.1 -->
+<!-- Version 3.2 DRAFT -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -86,7 +86,10 @@
     3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
 
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.1">
+<!-- <tbd> 2016, version 3.2
+-->
+
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.2">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
