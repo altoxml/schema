@@ -3,7 +3,7 @@
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
-<!-- Version 3.2 DRAFT -->
+<!-- Version 4.0 DRAFT -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -90,8 +90,14 @@
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
 	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
 -->
+
+<!-- <tbd> July 2017, version 4.0 (draft)
+	1. Introduce generic "Processing" and deprecate "OcrProcessing"
+	2. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
+	3. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
+-->
 	
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.2">
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
