@@ -88,7 +88,7 @@
 
 <!-- <tbd> 2016, version 3.2
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
-	2. Extended annotation for clarification of the difference of existing element ALTERNATTIVE and Glyph/Variant
+	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
 -->
 	
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v3#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v3#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="3.2">
