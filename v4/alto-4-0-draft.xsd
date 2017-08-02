@@ -710,13 +710,25 @@
 	</xsd:complexType>
 	<xsd:complexType name="ocrProcessingType">
 		<xsd:annotation>
-			<xsd:documentation>Information on how the text was created, including preprocessing, OCR processing, and postprocessing steps.</xsd:documentation>
-			<xsd:documentation>Where possible, this draws from MIX's change history.</xsd:documentation>
+			<xsd:documentation>ADeprecated. processingType should be used instead.</xsd:documentation>
+			<xsd:documentation>Information on how the text was created, including preprocessing, OCR processing, and postprocessing steps. Where possible, this draws from MIX's change history.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="preProcessingStep" type="processingStepType" minOccurs="0" maxOccurs="unbounded"/>
 			<xsd:element name="ocrProcessingStep" type="processingStepType"/>
 			<xsd:element name="postProcessingStep" type="processingStepType" minOccurs="0" maxOccurs="unbounded"/>
+		</xsd:sequence>
+	</xsd:complexType>
+	<xsd:complexType name="processingType">
+		<xsd:annotation>
+			<xsd:documentation>Information on how the text was created, including generation, modification, preprocessing, postprocessing or any other steps. May include references to a list of space-separated IDs of elements processed.</xsd:documentation>
+		</xsd:annotation>
+		<xsd:sequence>
+			<xsd:element name="contentGeneration" type="processingType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="contentModification" type="processingType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="preOperation" type="processingType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="postOperation" type="processingType" minOccurs="0" maxOccurs="unbounded"/>
+			<xsd:element name="other" type="processingType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="processingStepType">
