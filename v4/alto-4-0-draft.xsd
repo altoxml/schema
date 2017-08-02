@@ -23,31 +23,31 @@
 	2. add measurement enumeration 'inch1200'
 -->
 <!-- Modifications of December 14, 2004:
-      1. "FILEID" (attribute of "ComposedBlock"): change type from xsd:IDREF to xsd:string
-      2. include minor changes requested by JDL
-      3. change "ZORDER" to "IDNEXT" (attribute of "BlockType")
+    1. "FILEID" (attribute of "ComposedBlock"): change type from xsd:IDREF to xsd:string
+    2. include minor changes requested by JDL
+    3. change "ZORDER" to "IDNEXT" (attribute of "BlockType")
 -->
 <!-- Modifications of February 24, 2006:
-      1. ACCURACY attribute added to PAGE element to store information on OCR accuracy
-      2. CS attribute added to TEXTLINE element to indicate manual correction status
+    1. ACCURACY attribute added to PAGE element to store information on OCR accuracy
+    2. CS attribute added to TEXTLINE element to indicate manual correction status
 -->
 <!-- Modifications of June 20, 2007 (version 1.3):
-      1. Adaption of xlink namespace and schema location to prevent conflicts on XSL transformations in combination with used namespace in original METS file
+    1. Adaption of xlink namespace and schema location to prevent conflicts on XSL transformations in combination with used namespace in original METS file
 -->
 <!-- Modifications of August 27, 2007 (version 1.4):
-      1. add "QUALITY_DETAIL" attribute to "PAGE" element (gives more details about the page quality, is a free string comparing with QUALITY attribute which is a restrictive one)
-      2. add "Cover" to "POSITION" attribute of "PAGE" element
-      3. specification of interpretation of confidence values (CC, WC, PC and ACCURACY)
+    1. add "QUALITY_DETAIL" attribute to "PAGE" element (gives more details about the page quality, is a free string comparing with QUALITY attribute which is a restrictive one)
+    2. add "Cover" to "POSITION" attribute of "PAGE" element
+    3. specification of interpretation of confidence values (CC, WC, PC and ACCURACY)
 -->
 <!-- Modifications of August 7, 2009:
-	1.  Change namespace from old CCS URI to LC-based URI.
-	2.  Use standard LC XLink Schema.
-	3.  Push version to 2.0 to reflect change in maintenance agency.
-	4.  Remove CCS copyright statement.
-	5.  Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of this change note.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes. 
+	1. Change namespace from old CCS URI to LC-based URI.
+	2. Use standard LC XLink Schema.
+	3. Push version to 2.0 to reflect change in maintenance agency.
+	4. Remove CCS copyright statement.
+	5. Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of this change note.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes. 
 -->
 <!-- Modifications of January 11, 2010:
-	1.  Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of the previous change note of August 7, 2009.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes that extended the 1.4 model prior to editorial board approval. 
+	1. Rollback to model used in 1.4 schema except with the changes itemized in 1-4 of the previous change note of August 7, 2009.  An incorrect version of the 2.0 alpha schema was public until 2010-01-11.  The incorrect version was a derivative of the Library of Congress's custom ALTO XML Schema that introduced new elements and attributes that extended the 1.4 model prior to editorial board approval. 
 -->
 <!-- February 20, 2014, version 2.1:
 	1. Page and BlockType element HEIGHT, WIDTH, HPOS, VPOS attribute types changed to xsd:float from xsd:int.
@@ -82,8 +82,8 @@
 
 <!-- January 2016, version 3.1
 	1. Changed schema version to 3.1
-    2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
-    3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
+	2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
+	3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
 
 <!-- <tbd> 2016, version 3.2
