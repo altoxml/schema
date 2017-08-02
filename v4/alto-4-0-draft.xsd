@@ -612,21 +612,21 @@
 	<xsd:simpleType name="MeasurementUnitType">
 		<xsd:annotation>
 			<xsd:documentation>
-										All measurement values inside the alto file are related to 
-										this unit, except the font size.
-										Coordinates as being used in HPOS and VPOS are absolute coordinates referring to the upper-left corner of a page.
-										The upper left corner of the page is defined as coordinate (0/0). 
+				All measurement values inside the alto file are related to 
+				this unit, except the font size.
+				Coordinates as being used in HPOS and VPOS are absolute coordinates referring to the upper-left corner of a page.
+				The upper left corner of the page is defined as coordinate (0/0). 
 
-										values meaning:
-										  mm10: 1/10th of millimeter
-										  inch1200: 1/1200th of inch 
-										  pixel: 1 pixel
+				values meaning:
+				mm10: 1/10th of millimeter
+				inch1200: 1/1200th of inch 
+				pixel: 1 pixel
 										
-										The values for pixel will be related to the resolution of the image based 
-										on which the layout is described. Incase the original image is not known
-										the scaling factor can be calculated based on total width and height of 
-										the image and the according information of the PAGE element.
-										</xsd:documentation>
+				The values for pixel will be related to the resolution of the image based 
+				on which the layout is described. Incase the original image is not known
+				the scaling factor can be calculated based on total width and height of 
+				the image and the according information of the PAGE element.
+		</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="pixel"/>
@@ -732,7 +732,7 @@
 	</xsd:complexType>
 	<xsd:complexType name="processingSoftwareType">
 		<xsd:annotation>
-			<xsd:documentation>Information about a software application. Where applicable, the preferred method for determining this information is by selecting Help --> About.</xsd:documentation>
+			<xsd:documentation>Information about a software application. Where applicable, the preferred method for determining this information is by selecting Help -- About.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:element name="softwareCreator" type="xsd:string" minOccurs="0">
@@ -901,15 +901,15 @@
 			<xsd:element name="XmlData" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="en">
-	          The xml data wrapper element XmlData is used to contain XML encoded metadata.
-	          The content of an XmlData element can be in any namespace or in no namespace.
-	          As permitted by the XML Schema Standard, the processContents attribute value for the
-	          metadata in an XmlData is set to “lax”. Therefore, if the source schema and its location are
-	          identified by means of an XML schemaLocation attribute, then an XML processor will validate
-	          the elements for which it can find declarations. If a source schema is not identified, or cannot be
-	          found at the specified schemaLocation, then an XML validator will check for well-formedness,
-	          but otherwise skip over the elements appearing in the XmlData element.
-	        </xsd:documentation>
+	          			The xml data wrapper element XmlData is used to contain XML encoded metadata.
+	          			The content of an XmlData element can be in any namespace or in no namespace.
+	          			As permitted by the XML Schema Standard, the processContents attribute value for the
+	          			metadata in an XmlData is set to “lax”. Therefore, if the source schema and its location are
+	          			identified by means of an XML schemaLocation attribute, then an XML processor will validate
+	          			the elements for which it can find declarations. If a source schema is not identified, or cannot be
+	          			found at the specified schemaLocation, then an XML validator will check for well-formedness,
+	          			but otherwise skip over the elements appearing in the XmlData element.
+	        		</xsd:documentation>
 				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
