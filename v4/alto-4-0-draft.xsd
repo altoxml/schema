@@ -23,21 +23,21 @@
 	2. add measurement enumeration 'inch1200'
 -->
 <!-- Modifications of December 14, 2004:
-    1. "FILEID" (attribute of "ComposedBlock"): change type from xsd:IDREF to xsd:string
-    2. include minor changes requested by JDL
-    3. change "ZORDER" to "IDNEXT" (attribute of "BlockType")
+	1. "FILEID" (attribute of "ComposedBlock"): change type from xsd:IDREF to xsd:string
+	2. include minor changes requested by JDL
+	3. change "ZORDER" to "IDNEXT" (attribute of "BlockType")
 -->
 <!-- Modifications of February 24, 2006:
-    1. ACCURACY attribute added to PAGE element to store information on OCR accuracy
-    2. CS attribute added to TEXTLINE element to indicate manual correction status
+	1. ACCURACY attribute added to PAGE element to store information on OCR accuracy
+	2. CS attribute added to TEXTLINE element to indicate manual correction status
 -->
 <!-- Modifications of June 20, 2007 (version 1.3):
-    1. Adaption of xlink namespace and schema location to prevent conflicts on XSL transformations in combination with used namespace in original METS file
+	1. Adaption of xlink namespace and schema location to prevent conflicts on XSL transformations in combination with used namespace in original METS file
 -->
 <!-- Modifications of August 27, 2007 (version 1.4):
-    1. add "QUALITY_DETAIL" attribute to "PAGE" element (gives more details about the page quality, is a free string comparing with QUALITY attribute which is a restrictive one)
-    2. add "Cover" to "POSITION" attribute of "PAGE" element
-    3. specification of interpretation of confidence values (CC, WC, PC and ACCURACY)
+	1. add "QUALITY_DETAIL" attribute to "PAGE" element (gives more details about the page quality, is a free string comparing with QUALITY attribute which is a restrictive one)
+	2. add "Cover" to "POSITION" attribute of "PAGE" element
+	3. specification of interpretation of confidence values (CC, WC, PC and ACCURACY)
 -->
 <!-- Modifications of August 7, 2009:
 	1. Change namespace from old CCS URI to LC-based URI.
@@ -61,17 +61,13 @@
 	9. HEIGHT attribute added to HYP and SP elements.
 -->
 <!-- April, 2014, version 2.2 DRAFT:
-	1. Anonymous types changed to named types (to allow use of xsd:redefine mechanism)
-		
+	1. Anonymous types changed to named types (to allow use of xsd:redefine mechanism)	
 -->
-
 <!-- July 2014, version 2.2 DRAFT
 	1. Version added to xsd:schema.
 	2. SCHEMAVERSION attribute added to <alto> element.
 	3. documentIdentifier element added to <sourceImageInformationType> element (+ documentIdentifierLocation attribute)
-
 -->
-
 <!-- August 2014, version 3.0
 	1. Changed namespace and targetNamespace to http://www.loc.gov/standards/alto/ns-v3#
 	2. Changed schema version to 3.0 
@@ -79,18 +75,15 @@
 	ALTO schemas will be updated by whole numbers upon making changes that break backward compatibility (version 1 to version 2), 
 	and decimals for changes that will not (2.0 to 2.1). The namespace itself will also only change on major versions (ns-v2 to ns-v3). 
 -->
-
 <!-- January 2016, version 3.1
 	1. Changed schema version to 3.1
 	2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
 	3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
-
 <!-- <tbd> 2016, version 3.2
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
 	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
 -->
-
 <!-- <tbd> July 2017, version 4.0 (draft)
 	1. Introduce generic "Processing" and deprecate "OcrProcessing"
 	2. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
@@ -566,9 +559,9 @@
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
 			<xsd:documentation>An ellipse shape. HPOS and VPOS describe the center of the ellipse.
-                                HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
+								HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 			<xsd:documentation>The attribute ROTATION tells the rotation of the e.g. text or 
-				               illustration within the block. The value is in degrees counterclockwise. </xsd:documentation>
+							   illustration within the block. The value is in degrees counterclockwise. </xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
@@ -658,7 +651,7 @@
 		<xsd:sequence>
 			<xsd:element name="fileName" type="fileNameType" minOccurs="0"/>
 			<xsd:element name="fileIdentifier" type="fileIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
-		        <xsd:element name="documentIdentifier" type="documentIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+				<xsd:element name="documentIdentifier" type="documentIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:simpleType name="fileNameType">
@@ -930,15 +923,15 @@
 			<xsd:element name="XmlData" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation xml:lang="en">
-	          			The xml data wrapper element XmlData is used to contain XML encoded metadata.
-	          			The content of an XmlData element can be in any namespace or in no namespace.
-	          			As permitted by the XML Schema Standard, the processContents attribute value for the
-	          			metadata in an XmlData is set to “lax”. Therefore, if the source schema and its location are
-	          			identified by means of an XML schemaLocation attribute, then an XML processor will validate
-	          			the elements for which it can find declarations. If a source schema is not identified, or cannot be
-	          			found at the specified schemaLocation, then an XML validator will check for well-formedness,
-	          			but otherwise skip over the elements appearing in the XmlData element.
-	        		</xsd:documentation>
+						The xml data wrapper element XmlData is used to contain XML encoded metadata.
+						The content of an XmlData element can be in any namespace or in no namespace.
+						As permitted by the XML Schema Standard, the processContents attribute value for the
+						metadata in an XmlData is set to “lax”. Therefore, if the source schema and its location are
+						identified by means of an XML schemaLocation attribute, then an XML processor will validate
+						the elements for which it can find declarations. If a source schema is not identified, or cannot be
+						found at the specified schemaLocation, then an XML validator will check for well-formedness,
+						but otherwise skip over the elements appearing in the XmlData element.
+					</xsd:documentation>
 				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:sequence>
@@ -951,8 +944,8 @@
 		<xsd:attribute name="TYPE" type="xsd:string" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Type can be used to classify and group the information within each tag
-	        element type.
-	      </xsd:documentation>
+			element type.
+		  </xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="LABEL" type="xsd:string" use="required">
@@ -968,7 +961,7 @@
 		<xsd:attribute name="URI" type="xsd:anyURI" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Any URI for authority or description relevant information.
-	      </xsd:documentation>
+		  </xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
