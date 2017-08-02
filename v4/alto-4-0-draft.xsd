@@ -124,9 +124,9 @@
 			<xsd:element name="Tags" type="TagsType" minOccurs="0">
 				<xsd:annotation>
 					<xsd:documentation>
-							Tag define properties of additional characteristic. The tags are referenced from related content element on Block or String element by attribute TAGREF via the tag ID.
-							This container element contains the individual elements for LayoutTags, StructureTags, RoleTags, NamedEntityTags and OtherTags
-						</xsd:documentation>
+						Tag define properties of additional characteristic. The tags are referenced from related content element on Block or String element by attribute TAGREF via the tag ID.
+						This container element contains the individual elements for LayoutTags, StructureTags, RoleTags, NamedEntityTags and OtherTags
+					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="Layout" type="LayoutType">
@@ -146,6 +146,9 @@
 			<xsd:element name="MeasurementUnit" type="MeasurementUnitType" minOccurs="1"/>
 			<xsd:element name="sourceImageInformation" type="sourceImageInformationType" minOccurs="0"/>
 			<xsd:element name="OCRProcessing" minOccurs="0" maxOccurs="unbounded">
+				<xsd:annotation>
+						<xsd:documentation>Element deprecated. 'Processing' should be used instead.</xsd:documentation>
+					</xsd:annotation>
 				<xsd:complexType>
 					<xsd:complexContent>
 						<xsd:extension base="ocrProcessingType">
@@ -154,6 +157,14 @@
 					</xsd:complexContent>
 				</xsd:complexType>
 			</xsd:element>
+			<xsd:element name="Processing" minOccurs="0" maxOccurs="unbounded">
+				<xsd:complexType>
+					<xsd:complexContent>
+						<xsd:extension base="ProcessingStepType">
+							<xsd:attribute name="ID" type="xsd:ID" use="required"/>
+						</xsd:extension>
+					</xsd:complexContent>
+				</xsd:complexType>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:complexType name="StylesType">
