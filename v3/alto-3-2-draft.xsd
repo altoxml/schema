@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 <!-- ALTO: Analyzed Layout and Text Object  -->
+<!-- This document is available under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/ ). 
+The ALTO Editorial Board has waived all rights to it worldwide under copyright law with confirmation of the original creating authors, including all related and neighboring rights, to the extent allowed by law.
+For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
@@ -86,7 +91,7 @@
     3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
 
-<!-- <tbd> 2016, version 3.2
+<!-- August 2017, version 3.2
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
 	2. Extended annotation for clarification of the difference of existing element ALTERNATTIVE and Glyph/Variant
 -->
