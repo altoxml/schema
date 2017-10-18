@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <!-- ALTO: Analyzed Layout and Text Object  -->
+<!-- This document is available under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0 - https://creativecommons.org/licenses/by-sa/4.0/ ). 
+The ALTO Editorial Board has waived all rights to it worldwide under copyright law with confirmation of the original creating authors, including all related and neighboring rights, to the extent allowed by law.
+For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. -->
+
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
@@ -79,17 +84,14 @@
 	1. Changed schema version to 3.1
 	2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
 	3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
--->
-<!-- <tbd> 2016, version 3.2
+<!-- <tbd> July 2017, version 4.0 (draft)
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
 	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
+	3. Introduce generic "Processing" and deprecate "OcrProcessing"
+	4. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
+	5. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
 -->
-<!-- <tbd> July 2017, version 4.0 (draft)
-	1. Introduce generic "Processing" and deprecate "OcrProcessing"
-	2. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
-	3. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
--->
-	
+
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
@@ -465,7 +467,7 @@
 				Any alternative for the word.
 				Alternative can outline a variant of writing by new typing / spelling rules, typically manually done or by dictionary replacements.
 				The above sample is an old composed character "Æ" of ancient time, which is replaced now by "Ä".
-				As variant are ment alternatives of the real printed content which are options outlined by the text recognition process. 
+				As variant are meant alternatives of the real printed content which are options outlined by the text recognition process. 
 				Similar sample: "Straße" vs. "Strasse". Such alternatives are not coming from text recognition.
 			</xsd:documentation>
 		</xsd:annotation>
@@ -560,9 +562,9 @@
 	<xsd:complexType name="EllipseType">
 		<xsd:annotation>
 			<xsd:documentation>An ellipse shape. HPOS and VPOS describe the center of the ellipse.
-								HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
+                                HLENGTH and VLENGTH are the width and height of the described ellipse.</xsd:documentation>
 			<xsd:documentation>The attribute ROTATION tells the rotation of the e.g. text or 
-							   illustration within the block. The value is in degrees counterclockwise. </xsd:documentation>
+				           illustration within the block. The value is in degrees counterclockwise. </xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="HPOS" type="xsd:float" use="required"/>
 		<xsd:attribute name="VPOS" type="xsd:float" use="required"/>
@@ -652,7 +654,7 @@
 		<xsd:sequence>
 			<xsd:element name="fileName" type="fileNameType" minOccurs="0"/>
 			<xsd:element name="fileIdentifier" type="fileIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
-				<xsd:element name="documentIdentifier" type="documentIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
+		        <xsd:element name="documentIdentifier" type="documentIdentifierType" minOccurs="0" maxOccurs="unbounded"/>
 		</xsd:sequence>
 	</xsd:complexType>
 	<xsd:simpleType name="fileNameType">
@@ -961,8 +963,7 @@
 		</xsd:attribute>
 		<xsd:attribute name="URI" type="xsd:anyURI" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Any URI for authority or description relevant information.
-		  </xsd:documentation>
+				<xsd:documentation>Any URI for authority or description relevant information.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
@@ -970,21 +971,21 @@
 		<xsd:annotation> 
 			<xsd:documentation>
 				Modern OCR software stores information on glyph level. A glyph is essentially a character or ligature.
-				Accordingly the value for the glyph element will be defined as follwed:
-				Precomposed representation = base + combining character(s) (decomposed representation)
+				Accordingly the value for the glyph element will be defined as follows:
+				Pre-composed representation = base + combining character(s) (decomposed representation)
 				See http://www.fileformat.info/info/unicode/char/0101/index.htm
 				"U+0101" = (U+0061) + (U+0304)
-				"combining characters" ("base characters" in combination with non-spacing characters which are combined to one) are represented as one "glyph", e.g. áàâ.
+				"combining characters" ("base characters" in combination with non-spacing marks or characters which are combined to one) are represented as one "glyph", e.g. áàâ.
 				
-				Each character has its own coordinate information and must be separately addressable as a distinct object.
+				Each glyph has its own coordinate information and must be separately addressable as a distinct object.
 				Correction and verification processes can be carried out for individual characters.
 				
-				Post-OCR analysis of the text as well as adaptive OCR algorithm must be able to record information on character level.
+				Post-OCR analysis of the text as well as adaptive OCR algorithm must be able to record information on glyph level.
 				In order to reproduce the decision of the OCR software, optional characters must be recorded. These are called variants.
 				The OCR software evaluates each variant and picks the one with the highest confidence score as the glyph.
 				The confidence score expresses how confident the OCR software is that a single glyph had been recognized correctly.
 				
-				The glyph elements are in order of the word. Each character need to be recorded to built up the whole word sequence.
+				The glyph elements are in order of the word. Each glyph need to be recorded to built up the whole word sequence.
 				
 				The glyph’s CONTENT attribute is no replacement for the string’s CONTENT attribute.
 				Due to post-processing steps such as correction the values of both attributes may be inconsistent. 
@@ -1012,9 +1013,9 @@
 		<xsd:attribute name="GC" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>
-					This GC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is confident.
+					This GC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is certain.
 					This attribute is optional. If it is not available, the default value for the variant is “0”.
-					The GC attribute semantic is the same as the WC attribute on the String element and VC on Glyph level.
+					The GC attribute semantic is the same as the WC attribute on the String element and VC on Variant element.
 				</xsd:documentation>
 			</xsd:annotation>
 			<xsd:simpleType>
@@ -1032,7 +1033,7 @@
 	<xsd:complexType name="VariantType" mixed="false">
 		<xsd:annotation>
 			<xsd:documentation>
-				Alternative (combined) character for the glyth, outlined by OCR engine or similar recognition processes.
+				Alternative (combined) character for the glyph, outlined by OCR engine or similar recognition processes.
 				In case the variant are two (combining) characters, two characters are outlined in one Variant element.
 				E.g. a Glyph element with CONTENT="m" can have a Variant element with the content "rn".
 				Details for different use-cases see on the samples on GitHub.
@@ -1057,7 +1058,7 @@
 		<xsd:attribute name="VC" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>
-					This VC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is confident.
+					This VC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is certain.
 					This attribute is optional. If it is not available, the default value for the variant is “0”.
 					The VC attribute semantic is the same as the GC attribute on the Glyph element.
 				</xsd:documentation>
