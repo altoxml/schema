@@ -84,12 +84,14 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	1. Changed schema version to 3.1
 	2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
 	3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
+-->
 <!-- <tbd> July 2017, version 4.0 (draft)
 	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
 	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
 	3. Introduce generic "Processing" and deprecate "OcrProcessing"
 	4. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
 	5. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
+	6. Fix for the element Shape. The Shape element can now only be used once within a PageSpace or a TextLine as it was intended.
 -->
 
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
@@ -526,9 +528,11 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:annotation>
 			<xsd:documentation>A region on a page</xsd:documentation>
 		</xsd:annotation>
-		<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+		<xsd:sequence>
 			<xsd:element name="Shape" type="ShapeType" minOccurs="0"  maxOccurs="1"/>
-			<xsd:group ref="BlockGroup"/>
+			<xsd:sequence minOccurs="0" maxOccurs="unbounded">
+				<xsd:group ref="BlockGroup"/>
+			</xsd:sequence>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="PageSpaceTypeID" use="optional"/>
 		<xsd:attribute name="STYLEREFS" type="xsd:IDREFS" use="optional"/>
@@ -869,8 +873,10 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 						</xsd:annotation>
 						<xsd:complexType>
 							<xsd:sequence>
-								<xsd:sequence maxOccurs="unbounded">
+								<xsd:sequence>
 									<xsd:element name="Shape" type="ShapeType" minOccurs="0" maxOccurs="1"/>
+								</xsd:sequence>
+								<xsd:sequence maxOccurs="unbounded">
 									<xsd:element name="String" type="StringType"/>
 									<xsd:element name="SP" type="SPType" minOccurs="0"/>
 								</xsd:sequence>
