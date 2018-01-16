@@ -144,8 +144,8 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:element name="sourceImageInformation" type="sourceImageInformationType" minOccurs="0"/>
 			<xsd:element name="OCRProcessing" minOccurs="0" maxOccurs="unbounded">
 				<xsd:annotation>
-						<xsd:documentation>Element deprecated. 'Processing' should be used instead.</xsd:documentation>
-					</xsd:annotation>
+					<xsd:documentation>Element deprecated. 'Processing' should be used instead.</xsd:documentation>
+				</xsd:annotation>
 				<xsd:complexType>
 					<xsd:complexContent>
 						<xsd:extension base="ocrProcessingType">
@@ -952,9 +952,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="TYPE" type="xsd:string" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Type can be used to classify and group the information within each tag
-			element type.
-		  </xsd:documentation>
+				<xsd:documentation>Type can be used to classify and group the information within each tag element type.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="LABEL" type="xsd:string" use="required">
