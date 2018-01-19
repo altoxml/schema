@@ -85,13 +85,16 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	2. Added support for using different shapes for the elements String, TextLine, all PageSpaceType elements and on all BlockType elements.
 	3. The description of the attribute ROTATION is changed to the rotation of the contents of a block and not the block itself. The attribute is inherited by all sub elements.
 -->
-<!-- <tbd> July 2017, version 4.0 (draft)
-	1. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
-	2. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
-	3. Introduce generic "Processing" and deprecate "OcrProcessing"
-	4. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
-	5. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
-	6. Fix for the element Shape. The Shape element can now only be used once within a PageSpace or a TextLine as it was intended.
+<!-- January 2018, version 4.0 (draft)
+	1. Changed schema version to 4.0
+	2. Changed namespace and targetNamespace to http://www.loc.gov/standards/alto/ns-v4#
+	3. Clarification and definition of the licensing to common standard "CC BY-SA 4.0" for this ALTO standard (with agreement of the authors)
+	4. Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
+	5. Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
+	6. Introduce generic "Processing" and deprecate "OcrProcessing"
+	7. Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
+	8. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
+	9. Fix for the element Shape. The Shape element can now only be used once within a PageSpace or a TextLine as it was intended.
 -->
 
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.0">
