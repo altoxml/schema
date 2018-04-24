@@ -6,10 +6,10 @@ Feedback, questions and new requirements can be added here.
 
 
 Latest official schema version:
-Version 3.1
-* Primary [http://www.loc.gov/standards/alto/v3/alto-3-1.xsd](http://www.loc.gov/standards/alto/v3/alto-3-1.xsd)
-* Alternate [https://cdn.rawgit.com/altoxml/schema/master/v3/alto-3-1.xsd](https://cdn.rawgit.com/altoxml/schema/master/v3/alto-3-1.xsd)
-* [Summary of changes](https://github.com/altoxml/documentation/wiki/v3.1-Changes)
+Version 4.0
+* Primary [http://www.loc.gov/standards/alto/v4/alto-4-0.xsd](http://www.loc.gov/standards/alto/v4/alto-4-0.xsd)
+* Alternate [https://cdn.rawgit.com/altoxml/schema/master/v4/alto-4-0.xsd](https://cdn.rawgit.com/altoxml/schema/master/v4/alto-4-0.xsd)
+* [Summary of changes](https://github.com/altoxml/documentation/wiki/v4.0-Changes)
 * [Leave a comment about v3.1 schema](https://github.com/altoxml/schema/issues/new) - Requires GitHub account  
 
 
