@@ -1,25 +1,24 @@
 ## [ALTO XML schema](https://github.com/altoxml/schema/wiki)
-This repository contains ALTO schema versions - draft and final released.
+This repository contains ALTO schema versions - drafts and final released ones.
 
-In the [issues](https://github.com/altoxml/schema/issues), all open issues and discussions about changes on the ALTO standard can be found and tracked.
-Feedback, questions and new requirements can be added here.
+All open issues and discussions about changes to the ALTO standard can be found and tracked in the [issues](https://github.com/altoxml/schema/issues) repository
 
+Latest official schema version is 4.0.<br>
+Primary source for the schema is (http://www.loc.gov/standards/alto/v4/alto-4-0.xsd)<br>
+Alternate source for the schema is (https://cdn.rawgit.com/altoxml/schema/master/v4/alto-4-0.xsd)<br>
 
-Latest official schema version:
-Version 4.0
-* Primary [http://www.loc.gov/standards/alto/v4/alto-4-0.xsd](http://www.loc.gov/standards/alto/v4/alto-4-0.xsd)
-* Alternate [https://cdn.rawgit.com/altoxml/schema/master/v4/alto-4-0.xsd](https://cdn.rawgit.com/altoxml/schema/master/v4/alto-4-0.xsd)
-* [Summary of changes](https://github.com/altoxml/documentation/wiki/v4.0-Changes)
-* [Leave a comment about v4.0 schema](https://github.com/altoxml/schema/issues/new) - Requires GitHub account  
+Summary of changes
 
+* Changed schema version to 4.0
+* Changed namespace and targetNamespace to http://www.loc.gov/standards/alto/ns-v4#
+* Clarification and definition of the licensing to common standard "CC BY-SA 4.0" for this ALTO standard (with agreement of the authors)
+* Added character based text description with new Glyph element and its subelement Variant (GlyphType, VariantType)
+* Extended annotation for clarification of the difference of existing element ALTERNATIVE and Glyph/Variant
+* Introduced generic "Processing" and deprecate "OcrProcessing"
+* Introduce generic "processingStep" with "ProcessingStepType" and required attribute "ID" and deprecate "preProcessingStep", "ocrProcessingStep", "postProcessingStep"
+* Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
+* Fix for the element Shape. The Shape element can now only be used once within a PageSpace or a TextLine as it was intended.
 
-A full overview of all previous schema versions can be found at:
-[altoxml / documentation / wiki / Versions](https://github.com/altoxml/documentation/wiki/Versions)  
+Details about the changes of the version and further documentation can be found in the ALTO
+[documentation](https://github.com/altoxml/documentation/wiki) repository.
 
-Details about changes and further documentation are in the repository
-["Documentation"](https://github.com/altoxml/documentation/wiki)  
-
-<br/>This schema is available under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0 - ["https://creativecommons.org/licenses/by-sa/4.0/"](https://creativecommons.org/licenses/by-sa/4.0/) ).
-<br/>This agreement is given for all versions starting version 2.0 (since hosting by the Library of Congress).
-<br/>"The ALTO Editorial Board has waived all rights to it worldwide under copyright law with confirmation of the original creating authors, including all related and neighboring rights, to the extent allowed by law. For the full text see ["https://creativecommons.org/licenses/by-sa/4.0/legalcode"](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
-<br/>Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany."
