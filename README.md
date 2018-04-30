@@ -21,7 +21,6 @@ Details about changes and further documentation are in the repository
 
 
 This schema is available under the Creative Commons Attribution-ShareAlike 4.0 International (CC BY-SA 4.0 - ["https://creativecommons.org/licenses/by-sa/4.0/"](https://creativecommons.org/licenses/by-sa/4.0/) ).
-
 <br/>This is agreement is given for all versions starting version 2.0 (since hosting by the Library of Congress).
 
 <br/>"The ALTO Editorial Board has waived all rights to it worldwide under copyright law with confirmation of the original creating authors, including all related and neighboring rights, to the extent allowed by law. For the full text see ["https://creativecommons.org/licenses/by-sa/4.0/legalcode"](https://creativecommons.org/licenses/by-sa/4.0/legalcode).
