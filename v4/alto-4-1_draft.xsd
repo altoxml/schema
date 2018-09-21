@@ -735,7 +735,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:documentation>Description of the processing step.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
+			<xsd:element name="processingCategory" type="processingCategoryType" minOccurs="0" maxOccurs="1">
 				<xsd:annotation>
+					<xsd:documentation>Classification of the category of operation, how the file was created, including generation, modification, preprocessing, postprocessing or any other steps.</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
 			<xsd:element name="processingDateTime" type="dateTimeType" minOccurs="0">
@@ -761,6 +763,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:element name="processingSoftware" type="processingSoftwareType" minOccurs="0"/>
 		</xsd:sequence>
 	</xsd:complexType>
+	<xsd:simpleType name="processingCategoryType">
 		<xsd:list>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:string">
