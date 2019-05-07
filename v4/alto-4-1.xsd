@@ -8,7 +8,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
-<!-- Version 4.1 DRAFT -->
+<!-- Version 4.1 -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -96,7 +96,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	8. Add common vocabulary for "processingStep" comprising the "ContentGeneration", "ContentModification", "PreOperation", "PostOperation", "Other"
 	9. Fix for the element Shape. The Shape element can now only be used once within a PageSpace or a TextLine as it was intended.
 -->
-<!-- September 2018, version 4.1
+<!-- May 2019, version 4.1
 	1. Fix for Processing including  processingStepType.
 	2. Add missing PROCESSINGREFS to PageType, PageSpaceType, BlockType, TextLine, StringType for referencing Processing history. 
 -->
