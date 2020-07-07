@@ -13,6 +13,14 @@ Summary of changes
 * Fix for Processing including  processingStepType.
 * Add missing PROCESSINGREFS to PageType, PageSpaceType, BlockType, TextLine, StringType for referencing Processing history.
 
+Draft schema version is 4.2 available for comment
+
+Summary of proposed changes
+
+* Change schema version to 4.2
+* Change BASELINE to accommodate a list of points in addition to a single point
+* Make FONTSIZE optional
+
 Details about the changes of the version and further documentation can be found in the ALTO
 [documentation](https://github.com/altoxml/documentation/wiki) repository.
 
