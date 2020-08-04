@@ -100,9 +100,10 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	1. Fix for Processing including  processingStepType.
 	2. Add missing PROCESSINGREFS to PageType, PageSpaceType, BlockType, TextLine, StringType for referencing Processing history. 
 -->
-<!-- June 2020, version 4.2
+<!-- June/July 2020, version 4.2
 	1. Change BASELINE to accommodate a list of points in addition to a single point.
 	2. Make FONTSIZE optional. 
+	3. Add "strikethrough" to list of allowed values for FONTSTYLE.
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.2">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -820,9 +821,10 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 						<xsd:restriction base="xsd:string">
 							<xsd:enumeration value="bold"/>
 							<xsd:enumeration value="italics"/>
+							<xsd:enumeration value="smallcaps"/>
+							<xsd:enumeration value="strikethrough"/>
 							<xsd:enumeration value="subscript"/>
 							<xsd:enumeration value="superscript"/>
-							<xsd:enumeration value="smallcaps"/>
 							<xsd:enumeration value="underline"/>
 						</xsd:restriction>
 					</xsd:simpleType>
