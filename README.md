@@ -20,6 +20,7 @@ Summary of proposed changes
 * Change schema version to 4.2
 * Change BASELINE to accommodate a list of points in addition to a single point
 * Make FONTSIZE optional
+* Add "strikethrough" to list of allowed values for FONTSTYLE
 
 Details about the changes of the version and further documentation can be found in the ALTO
 [documentation](https://github.com/altoxml/documentation/wiki) repository.
