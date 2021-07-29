@@ -315,9 +315,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		</xsd:annotation>
 		<xsd:sequence>
 		<xsd:choice minOccurs="1" maxOccurs="unbounded">
-			<element name="ElementRefIndexed" type="ElementRefIndexedType"/>
-			<element name="OrderedGroupIndexed" type="OrderedGroupIndexedType"/>
-			<element name="UnorderedGroupIndexed" type="UnorderedGroupIndexedType"/>
+			<xsd:element name="ElementRefIndexed" type="ElementRefIndexedType"/>
+			<xsd:element name="OrderedGroupIndexed" type="OrderedGroupIndexedType"/>
+			<xsd:element name="UnorderedGroupIndexed" type="UnorderedGroupIndexedType"/>
 		</xsd:choice>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
@@ -752,7 +752,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:element name="Circle" type="CircleType"/>
 		</xsd:choice>
 	</xsd:complexType>
-	<xsd:complexType name="InlineDirType">
+	<xsd:simpleType name="InlineDirType">
 		<xsd:annotation>
 			<xsd:documentation>Describes the base direction of text inside a line or of all lines inside a text block.</xsd:documentation>
 			<xsd:documentation>These values should correspond to the base direction assigned to the respective elements during Unicode encoding with the BiDi algorithm.</xsd:documentation>
@@ -763,7 +763,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:enumeration value="ttb"/>
 			<xsd:enumeration value="btt"/>
 		</xsd:restriction>
-	</xsd:complexType>
+	</xsd:simpleType>
 	<xsd:complexType name="PolygonType">
 		<xsd:annotation>
 			<xsd:documentation>A polygon shape.</xsd:documentation>
