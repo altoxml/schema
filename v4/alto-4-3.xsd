@@ -139,7 +139,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			</xsd:element>
 			<xsd:element name="ReadingOrder" type="ReadingOrderType" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>Describes the reading order of the page.
+					<xsd:documentation>Describes one or reading orders for the page.
 							   If this block is not defined the elements inside the document are assumed to be in a valid reading order.
 					</xsd:documentation>
 				</xsd:annotation>
