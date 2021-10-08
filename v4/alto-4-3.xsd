@@ -213,13 +213,13 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:complexType name="ReadingOrderType">
 		<xsd:annotation>
 			<xsd:documentation>
-                                Defines a reading order within the page. Groups
-                                may be either unordered or ordered and can
+                                Defines one or more reading orders within the
+                                page. Groups may be either unordered or ordered and can
                                 contain other groups, e.g. a page containing
                                 unrelated texts that are ordered individually
                                 would be encoded as an UnorderedGroup containing
-				multiple OrderedGroups. The granularity of elements 
-				can vary inside groups.
+                                multiple OrderedGroups. The granularity of
+                                elements can vary inside groups.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
@@ -256,79 +256,20 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
-	<xsd:complexType name="ElementRefIndexedType">
-		<xsd:annotation>
-			<xsd:documentation>
-                                A reference to a numbered element such as a
-                                block, TextLine, String, or Glyph.
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
-		<xsd:attribute name="INDEX" type="xsd:int" use="required">
-			<xsd:annotation>
-				<xsd:documentation>
-					Position of this element within the current group.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="REF" type="xsd:IDREFS" use="required">
-			<xsd:annotation>
-				<xsd:documentation>
-                                        A link to the referenced element. Valid
-                                        target elements are any block type,
-                                        TextLine, String, or Glyph.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional">
-			<xsd:annotation>
-				<xsd:documentation>
-                                        Optionally annotates the role of the
-                                        referenced element in the reading order
-                                        with one or more tags. Examples could be
-                                        interlinear additions or marginalia.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-	</xsd:complexType>
 	<xsd:complexType name="OrderedGroupType">
 		<xsd:annotation>
 			<xsd:documentation>
-				A numbered group containing ordered elements.
+				A group containing ordered elements.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
 			<xsd:choice minOccurs="1" maxOccurs="unbounded">
-				<xsd:element name="ElementRefIndexed" type="ElementRefIndexedType"/>
-				<xsd:element name="OrderedGroupIndexed" type="OrderedGroupIndexedType"/>
-				<xsd:element name="UnorderedGroupIndexed" type="UnorderedGroupIndexedType"/>
+				<xsd:element name="ElementRef" type="ElementRefType"/>
+				<xsd:element name="OrderedGroup" type="OrderedGroupType"/>
+				<xsd:element name="UnorderedGroup" type="UnorderedGroupType"/>
 			</xsd:choice>
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
-		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
-	</xsd:complexType>
-	<xsd:complexType name="OrderedGroupIndexedType">
-		<xsd:annotation>
-			<xsd:documentation>
-				Indexed group containing ordered elements.
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-		<xsd:choice minOccurs="1" maxOccurs="unbounded">
-			<xsd:element name="ElementRefIndexed" type="ElementRefIndexedType"/>
-			<xsd:element name="OrderedGroupIndexed" type="OrderedGroupIndexedType"/>
-			<xsd:element name="UnorderedGroupIndexed" type="UnorderedGroupIndexedType"/>
-		</xsd:choice>
-		</xsd:sequence>
-		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
-		<xsd:attribute name="INDEX" type="xsd:int" use="required">
-			<xsd:annotation>
-				<xsd:documentation>
-                                        Position of this element within the
-                                        current group.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
 		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>
@@ -345,7 +286,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:complexType name="UnorderedGroupType">
 		<xsd:annotation>
 			<xsd:documentation>
-				A numbered group containing unordered elements.
+				A group containing unordered elements.
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
@@ -358,31 +299,6 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
 	</xsd:complexType>
-	<xsd:complexType name="UnorderedGroupIndexedType">
-		<xsd:annotation>
-			<xsd:documentation>
-				Indexed group containing unordered elements
-			</xsd:documentation>
-		</xsd:annotation>
-		<xsd:sequence>
-			<xsd:choice minOccurs="1" maxOccurs="unbounded">
-				<xsd:element name="ElementRef" type="ElementRefType"/>
-				<xsd:element name="OrderedGroup" type="OrderedGroupType"/>
-				<xsd:element name="UnorderedGroup" type="UnorderedGroupType"/>
-			</xsd:choice>
-		</xsd:sequence>
-		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
-		<xsd:attribute name="INDEX" type="xsd:int" use="required">
-			<xsd:annotation>
-				<xsd:documentation>
-                                        Position of this element within the
-                                        current group.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional"/>
-	</xsd:complexType>
-
 	<xsd:simpleType name="QualityType">
 		<xsd:annotation>
 			<xsd:documentation>Gives brief information about original page quality</xsd:documentation>
