@@ -225,7 +225,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
-			<xsd:choice minOccurs="1" maxOccurs="1">
+			<xsd:choice minOccurs="1" maxOccurs="unbounded">
 				<xsd:element name="OrderedGroup" type="OrderedGroupType"/>
 				<xsd:element name="UnorderedGroup" type="UnorderedGroupType"/>
 			</xsd:choice>
