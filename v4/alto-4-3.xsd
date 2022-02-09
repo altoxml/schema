@@ -273,6 +273,15 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional">
+		<xsd:attribute name="REF" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					A link to the referenced element. Valid
+					target elements are any block type,
+					TextLine, or String.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
 			<xsd:annotation>
 				<xsd:documentation>
                                         Optionally annotates the role of the
