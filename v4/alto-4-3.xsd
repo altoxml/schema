@@ -297,7 +297,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:complexType name="UnorderedGroupType">
 		<xsd:annotation>
 			<xsd:documentation>
-				A group containing unordered elements.
+				A group containing unordered elements (i.e. the sequence of OrderedGroup, UnorderedGroup or ElementRef subelements is arbitrary).
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
