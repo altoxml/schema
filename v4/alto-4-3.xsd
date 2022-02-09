@@ -528,7 +528,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		</xsd:attribute>
 		<xsd:attribute name="IDNEXT" type="xsd:IDREF" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>The next block in reading sequence on the page.</xsd:documentation>
+				<xsd:documentation>The next block in reading order of the page (if ReadingOrder is not specified, and elements are not in order).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
