@@ -261,7 +261,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:complexType name="OrderedGroupType">
 		<xsd:annotation>
 			<xsd:documentation>
-				A group containing ordered elements.
+				A group containing ordered elements (i.e. the sequence of OrderedGroup, UnorderedGroup or ElementRef subelements is ordered).
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
