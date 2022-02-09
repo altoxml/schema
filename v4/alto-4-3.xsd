@@ -139,8 +139,10 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			</xsd:element>
 			<xsd:element name="ReadingOrder" type="ReadingOrderType" minOccurs="0">
 				<xsd:annotation>
-					<xsd:documentation>Describes one or reading orders for the page.
-							   If this block is not defined the elements inside the document are assumed to be in a valid reading order.
+					<xsd:documentation>
+						Describes alternative hierarchical orderings of the page (i.e. total orders over its segments, for linear text flow),
+						in addition to the explicit flat reading order defined by @IDNEXT on the block level,
+						and the implicit flat reading order implied by the segment element ordering.
 					</xsd:documentation>
 				</xsd:annotation>
 			</xsd:element>
