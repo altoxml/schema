@@ -8,7 +8,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 <!-- Originally created during the EU-funded Project METAe, the Metadata Engine Project (2001 - 2003), by Alexander Egger (1), Birgit Stehno (2) and Gregor Retti (2), (1) University of Graz and (2) University of Innsbruck, Austria with contributions of Ralph Tiede, CCS GmbH, Germany -->
 <!-- Prepared for the Library of Congress by Ralph Tiede, CCS GmbH, with the assistance of Justin Littman (Library of Congress). -->
 
-<!-- Version 4.2 -->
+<!-- Version 4.3 -->
 
 <!-- Change History -->
 <!-- June 22, 2004: Version finalized for docWORKS/METAe -->
@@ -104,6 +104,10 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	1. Change BASELINE to accommodate a list of points in addition to a single point.
 	2. Make FONTSIZE optional. 
 	3. Add "strikethrough" to list of allowed values for FONTSTYLE.
+-->
+<!-- February 2022, version 4.3
+	1. Add @BASEDIRECTION attribute defining base direction and line orientation to TextLine and BlockType.
+	2. Add support for explicit reading order definitions with "ReadingOrder" element containing "UnorderedGroup"s, "OrderedGroup"s, and "ElementRef"s. 
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.2">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
