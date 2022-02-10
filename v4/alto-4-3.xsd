@@ -273,15 +273,6 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		</xsd:sequence>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
 		<xsd:attribute name="TAGREFS" type="xsd:IDREFS" use="optional">
-		<xsd:attribute name="REF" type="xsd:IDREFS" use="optional">
-			<xsd:annotation>
-				<xsd:documentation>
-					A link to the referenced element. Valid
-					target elements are any block type,
-					TextLine, or String.
-				</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
 			<xsd:annotation>
 				<xsd:documentation>
                                         Optionally annotates the role of the
@@ -290,6 +281,15 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
                                         distinguishing
                                         parallel texts or apparatus criticus and
                                         main text.
+				</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attribute>
+		<xsd:attribute name="REF" type="xsd:IDREFS" use="optional">
+			<xsd:annotation>
+				<xsd:documentation>
+					A link to the referenced element. Valid
+					target elements are any block type,
+					TextLine, or String.
 				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -690,8 +690,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	</xsd:complexType>
 	<xsd:simpleType name="InlineDirType">
 		<xsd:annotation>
-			<xsd:documentation>Describes the base direction of text inside a line or of all lines inside a text block.</xsd:documentation>
-			<xsd:documentation>These values should correspond to the base direction assigned to the respective elements during Unicode encoding with the BiDi algorithm.</xsd:documentation>
+			<xsd:documentation>Describes the inline base direction and line orientation of a line or of all lines inside a text block.</xsd:documentation>
+			<xsd:documentation>The meaning of these terms is defined by the W3C writing modes document: <a href="https://www.w3.org/TR/css-writing-modes-3/#writing-mode"/></xsd:documentation>
+			<xsd:documentation>These values should correspond to the base direction set in the BiDi algorithm to the respective elements during Unicode encoding. A value of "ttb" (top-to-bottom) implies a base direction of left-to-right, a value of "btt" (bottom-to-top) a base direction of right-to-left.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string">
 			<xsd:enumeration value="ltr"/>
