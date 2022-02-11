@@ -858,7 +858,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	</xsd:complexType>
 	<xsd:complexType name="ocrProcessingType">
 		<xsd:annotation>
-			<xsd:documentation>Deprecated. processingType should be used instead.</xsd:documentation>
+			<xsd:documentation>Deprecated. processingStepType should be used instead.</xsd:documentation>
 			<xsd:documentation>Information on how the text was created, including preprocessing, OCR processing, and postprocessing steps. Where possible, this draws from MIX's change history.</xsd:documentation>
 		</xsd:annotation>
 		<xsd:sequence>
@@ -1187,8 +1187,8 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:attribute name="GC" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>
-					This GC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the variant where is 1 is certain.
-					This attribute is optional. If it is not available, the default value for the variant is “0”.
+					This GC attribute records a float value between 0.0 and 1.0 that expresses the level of confidence for the glyph where 1 is certain.
+					This attribute is optional. If it is not available, the default value for the glyph is “0”.
 					The GC attribute semantic is the same as the WC attribute on the String element and VC on Variant element.
 				</xsd:documentation>
 			</xsd:annotation>
