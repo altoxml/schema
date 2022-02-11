@@ -109,7 +109,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	1. Add @BASEDIRECTION attribute defining base direction and line orientation to TextLine and BlockType.
 	2. Add support for explicit reading order definitions with "ReadingOrder" element containing "UnorderedGroup"s, "OrderedGroup"s, and "ElementRef"s. 
 -->
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.2">
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.3">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
