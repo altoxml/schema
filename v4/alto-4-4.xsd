@@ -110,8 +110,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	2. Add support for explicit reading order definitions with "ReadingOrder" element containing "UnorderedGroup"s, "OrderedGroup"s, and "ElementRef"s. 
 -->
 <!-- June/July 2022, version 4.4
-	1. Add @LANG attribute on page level to describe the default language used in document
-	2. Add @ROTATION attribute on page level to describe the default rotation used in document
+	1. Add @LANG attribute on PageType level to describe the default language used in document
+	2. Add @ROTATION attribute on PageType level to describe the default rotation used in document
+	3. Add @OTHERLANGS attribute on PageType to summarize all the languages present into a particular document 
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.3">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
