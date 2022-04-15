@@ -443,7 +443,15 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	      			<xsd:documentation>Default language for text on this page. The default value can be overwritten on lower levels (Textblock, Textline, etc)</xsd:documentation>
 	    		</xsd:annotation>
   		</xsd:attribute>
+		<xsd:attribute name="OTHERLANGS" type="ListOfLanguages" use="optional">
+			<xsd:annotation>
+	      			<xsd:documentation>Other languages that appear on this page. Provides a convinient way to summarize all the languages found on a particular page, without parsing the entire file</xsd:documentation>
+	    		</xsd:annotation>
+		</xsd:attribute>
 	</xsd:complexType>
+	<xsd:simpleType name="ListOfLanguages">
+		<xsd:list itemType="xsd:language"/>
+	</xsd:simpleType>
 	<xsd:complexType name="LayoutType">
 		<xsd:sequence>
 			<xsd:element name="Page" type="PageType" maxOccurs="unbounded"/>
