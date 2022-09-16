@@ -20,7 +20,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	4. internal changes to validate with Xerces parser
 	5. define fontstyles by enumerations
 	6. change "WC" (word confidence) attribute to xsd:float in range of "0" to "1".
-	7. Add "ALTERNATIVE" als childs to "STRING" element 
+	7. Add "ALTERNATIVE" as children to "STRING" element 
 	8. Add "language" attribute to "Textblock" and "STRING" element
 -->
 <!-- Modifications of December 02, 2004: 
