@@ -811,7 +811,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				pixel: 1 pixel
 										
 				The values for pixel will be related to the resolution of the image based 
-				on which the layout is described. Incase the original image is not known
+				on which the layout is described. In case the original image is not known
 				the scaling factor can be calculated based on total width and height of 
 				the image and the according information of the PAGE element.
 		</xsd:documentation>
