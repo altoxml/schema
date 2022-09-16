@@ -473,7 +473,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:attribute name="ID" type="ParagraphStyleID" use="required"/>
 		<xsd:attribute name="ALIGN" use="optional">
 			<xsd:annotation>
-				<xsd:documentation>Indicates the alignement of the paragraph. Could be left, right, center or justify.</xsd:documentation>
+				<xsd:documentation>Indicates the alignment of the paragraph. Could be left, right, center or justify.</xsd:documentation>
 			</xsd:annotation>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:string">
