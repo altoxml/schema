@@ -446,7 +446,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
   		</xsd:attribute>
 		<xsd:attribute name="OTHERLANGS" type="ListOfLanguages" use="optional">
 			<xsd:annotation>
-	      			<xsd:documentation>Other languages that appear on this page. Provides a convinient way to summarize all the languages found on a particular page, without parsing the entire file</xsd:documentation>
+	      			<xsd:documentation>Other languages that appear on this page. Provides a convenient way to summarize all the languages found on a particular page, without parsing the entire file</xsd:documentation>
 	    		</xsd:annotation>
 		</xsd:attribute>
 	</xsd:complexType>
