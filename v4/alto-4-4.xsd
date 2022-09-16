@@ -701,7 +701,13 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	</xsd:complexType>
 	<xsd:simpleType name="PointsType">
 		<xsd:annotation>
-			<xsd:documentation>A list of points</xsd:documentation>
+			<xsd:documentation>A list of coordinate-pairs that are absolute to the upper-left corner of a page.</xsd:documentation>
+			<xsd:documentation>The upper left corner of the page is defined as coordinate (0,0)</xsd:documentation>
+			<xsd:documentation>Even there are no rules to enforce a particular format for a points list recommended formats are:</xsd:documentation>
+			<xsd:documentation>"x1 y1 x2 y2 ... xn yn"</xsd:documentation>
+			<xsd:documentation>"x1,y1 x2,y2 ... xn,yn"</xsd:documentation>
+			<xsd:documentation>"(x1 y1) (x2 y2) ... (xn yn)"</xsd:documentation>
+			<xsd:documentation>"(x1,y1) (x2,y2) ... (xn,yn)"</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
