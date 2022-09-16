@@ -1197,7 +1197,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:annotation>
 				<xsd:documentation>
 					CONTENT contains the precomposed representation (combining character) of the character from the parent String element.
-					The sequence position of the Gylph element matches the position of the character in the String.
+					The sequence position of the Glyph element matches the position of the character in the String.
 				</xsd:documentation>
 			</xsd:annotation>
 			<xsd:simpleType>
