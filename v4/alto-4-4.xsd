@@ -587,7 +587,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		</xsd:attribute>
 		<xsd:attributeGroup ref="xlink:simpleLink">
 			<xsd:annotation>
-				<xsd:documentation>Obsolete. Planned to be removed in future versions due to issues created on mixed validation and because in practice it is not used very often</xsd:documentation>
+				<xsd:documentation>Attribute group deprecated. Planned to be removed in future versions due to issues created on mixed validation and because in practice it is not used very often</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attributeGroup>
 	</xsd:complexType>
