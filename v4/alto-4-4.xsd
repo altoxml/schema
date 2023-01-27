@@ -109,10 +109,12 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	1. Add @BASEDIRECTION attribute defining base direction and line orientation to TextLine and BlockType.
 	2. Add support for explicit reading order definitions with "ReadingOrder" element containing "UnorderedGroup"s, "OrderedGroup"s, and "ElementRef"s. 
 -->
-<!-- June/July 2022, version 4.4
+<!-- March 2023, version 4.4
 	1. Add @LANG attribute on PageType level to describe the default language used in document
 	2. Add @ROTATION attribute on PageType level to describe the default rotation used in document
 	3. Add @OTHERLANGS attribute on PageType to summarize all the languages present into a particular document 
+	4. Adapt "PointsType" documentation
+	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v4#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v4#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="4.4">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -583,7 +585,11 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. The correction status should be recorded at the highest level possible (Block, TextLine, String).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:attributeGroup ref="xlink:simpleLink"/>
+		<xsd:attributeGroup ref="xlink:simpleLink">
+			<xsd:annotation>
+				<xsd:documentation>Obsolete. Planned to be removed in future versions due to issues created on mixed validation and because in practice it is not used very often</xsd:documentation>
+			</xsd:annotation>
+		</xsd:attributeGroup>
 	</xsd:complexType>
 	<xsd:complexType name="SPType">
 		<xsd:annotation>
@@ -702,12 +708,13 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:simpleType name="PointsType">
 		<xsd:annotation>
 			<xsd:documentation>A list of coordinate-pairs that are absolute to the upper-left corner of a page.</xsd:documentation>
-			<xsd:documentation>The upper left corner of the page is defined as coordinate (0,0)</xsd:documentation>
-			<xsd:documentation>Even there are no rules to enforce a particular format for a points list recommended formats are:</xsd:documentation>
+			<xsd:documentation>The upper left corner of the page is defined as x=0 and y=0</xsd:documentation>
+			<xsd:documentation>Currently there are no rules to enforce a particular format for a points list but recommended formats are:</xsd:documentation>
 			<xsd:documentation>"x1 y1 x2 y2 ... xn yn"</xsd:documentation>
 			<xsd:documentation>"x1,y1 x2,y2 ... xn,yn"</xsd:documentation>
 			<xsd:documentation>"(x1 y1) (x2 y2) ... (xn yn)"</xsd:documentation>
 			<xsd:documentation>"(x1,y1) (x2,y2) ... (xn,yn)"</xsd:documentation>
+			<xsd:documentation>On future versions is planned to enforce these rules accordingly</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
