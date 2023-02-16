@@ -105,7 +105,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	2. Make FONTSIZE optional.
 	3. Add "strikethrough" to list of allowed values for FONTSTYLE.
 -->
-<!-- February 2022, version 4.3
+<!-- May 2022, version 4.3
 	1. Add @BASEDIRECTION attribute defining base direction and line orientation to TextLine and BlockType.
 	2. Add support for explicit reading order definitions with "ReadingOrder" element containing "UnorderedGroup"s, "OrderedGroup"s, and "ElementRef"s.
 -->
