@@ -709,12 +709,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:annotation>
 			<xsd:documentation>A list of coordinate-pairs that are absolute to the upper-left corner of a page.</xsd:documentation>
 			<xsd:documentation>The upper left corner of the page is defined as x=0 and y=0</xsd:documentation>
-			<xsd:documentation>Currently there are no rules to enforce a particular format for a points list but recommended formats are:</xsd:documentation>
-			<xsd:documentation>"x1 y1 x2 y2 ... xn yn"</xsd:documentation>
-			<xsd:documentation>"x1,y1 x2,y2 ... xn,yn"</xsd:documentation>
-			<xsd:documentation>"(x1 y1) (x2 y2) ... (xn yn)"</xsd:documentation>
-			<xsd:documentation>"(x1,y1) (x2,y2) ... (xn,yn)"</xsd:documentation>
-			<xsd:documentation>On future versions is planned to enforce these rules accordingly</xsd:documentation>
+			<xsd:documentation>Currently there are no rules to enforce a particular format for a points list but in future versions is planned to restrict it to following options:</xsd:documentation>
+			<xsd:documentation>"x1,y1 x2,y2 ... xn,yn" - highly recommended as widely used and easy to read by both human and machine</xsd:documentation>
+			<xsd:documentation>"x1 y1 x2 y2 ... xn yn" - kept for back compatibility, since currently there are tools using this format</xsd:documentation>
 		</xsd:annotation>
 		<xsd:restriction base="xsd:string"/>
 	</xsd:simpleType>
