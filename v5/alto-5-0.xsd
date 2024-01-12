@@ -117,9 +117,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
+	1. Remove xlink attribute group from "BlockType"
 -->
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
-	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
 			<xsd:documentation>ALTO (analyzed layout and text object) stores layout information and 
@@ -587,11 +587,6 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				<xsd:documentation>Correction Status. Indicates whether manual correction has been done or not. The correction status should be recorded at the highest level possible (Block, TextLine, String).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:attributeGroup ref="xlink:simpleLink">
-			<xsd:annotation>
-				<xsd:documentation>Attribute group deprecated. Planned to be removed in future versions due to issues created on mixed validation and because in practice it is not used very often</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attributeGroup>
 	</xsd:complexType>
 	<xsd:complexType name="SPType">
 		<xsd:annotation>
