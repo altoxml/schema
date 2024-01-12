@@ -117,6 +117,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
+	2. Remove ZORDER/IDNEXT mechanism since from 4.3 a better ordering mechanism is in place
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -154,7 +155,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				<xsd:annotation>
 					<xsd:documentation>
 						Describes alternative hierarchical orderings of the page (i.e. total orders over its segments, for linear text flow),
-						in addition to the explicit flat reading order defined by @IDNEXT on the block level,
+						replacing explicit flat reading order defined before version 5.0 by @IDNEXT on the block level,
 						and the implicit flat reading order implied by the segment element ordering.
 					</xsd:documentation>
 				</xsd:annotation>
@@ -575,11 +576,6 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 		<xsd:attribute name="ROTATION" type="xsd:float" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Tells the rotation of e.g. text or illustration within the block. The value is in degree counterclockwise.</xsd:documentation>
-			</xsd:annotation>
-		</xsd:attribute>
-		<xsd:attribute name="IDNEXT" type="xsd:IDREF" use="optional">
-			<xsd:annotation>
-				<xsd:documentation>The next block in reading order of the page (if ReadingOrder is not specified, and elements are not in order).</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
 		<xsd:attribute name="CS" type="xsd:boolean" use="optional">
