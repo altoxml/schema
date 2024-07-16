@@ -117,9 +117,9 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
-	4. Restrict values for HPOS VPOS WIDTH HEIGHT relatively to Page coordinates (requires XSD 1.1)
+	4. Add additional validation features for detailed quality assurance checks using SCHEMATRON
 -->
-<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:vc="http://www.w3.org/2007/XMLSchema-versioning" vc:minVersion="1.1" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
+<xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
 	<xsd:element name="alto" type="altoType">
 		<xsd:annotation>
@@ -128,6 +128,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			ALTO is a standardized XML format to store layout and content information.
 			It is designed to be used as an extension schema to METS (Metadata Encoding and Transmission Standard),
 			where METS provides metadata and structural information while ALTO contains content and physical information.
+			For detailed quality assurance checks a SCHEMATRON based schema is provided together with current xsd schema
 			</xsd:documentation>
 		</xsd:annotation>
 	</xsd:element>
@@ -454,11 +455,6 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	      			<xsd:documentation>Other languages that appear on this page. Provides a convenient way to summarize all the languages found on a particular page, without parsing the entire file</xsd:documentation>
 	    		</xsd:annotation>
 		</xsd:attribute>
-		<xsd:assert test="@PHYSICAL_IMG_NR &gt; 0"/>
-		<xsd:assert test="not(exists(@HEIGHT)) or @HEIGHT &gt;= 0"/> 
-		<xsd:assert test="not(exists(@WIDTH)) or @WIDTH &gt;= 0"/>
-		<xsd:assert test="not(exists(@ACCURACY)) or (@ACCURACY &gt;= 0 and @ACCURACY &lt;= 100)"/>
-		<xsd:assert test="not(exists(@ROTATION)) or (@ROTATION &gt;= -180 and @ROTATION &lt;= 360)"/>
 	</xsd:complexType>
 	<xsd:simpleType name="ListOfLanguages">
 		<xsd:list itemType="xsd:language"/>
