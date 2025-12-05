@@ -117,6 +117,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
+	5. Allow multiple characters on Glyph CONTENT attribute to be able to represent complex glyphs that do not have a precomposed representation
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -247,7 +248,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	<xsd:complexType name="ElementRefType">
 		<xsd:annotation>
 			<xsd:documentation>
-				A reference to an element such as a block, TextLine, String, or Glyph.
+				A reference to an element such as a block, TextLine, String, or .
 			</xsd:documentation>
 		</xsd:annotation>
 		<xsd:attribute name="ID" type="xsd:ID" use="required"/>
@@ -256,7 +257,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				<xsd:documentation>
                                         A link to the referenced element. Valid
                                         target elements are any block type,
-                                        TextLine, String, or Glyph.
+                                        TextLine, String, or .
 				</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
@@ -1209,12 +1210,13 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 			<xsd:annotation>
 				<xsd:documentation>
 					CONTENT contains the precomposed representation (combining character) of the character from the parent String element.
-					The sequence position of the Glyph element matches the position of the character in the String.
+					The sequence position of the Glyph element matches the position of the character in the String. 
+					This string length is recommended to be 1 (precomposed representation if available), but if no precomposed representation is possible, length could be higher
 				</xsd:documentation>
 			</xsd:annotation>
 			<xsd:simpleType>
 				<xsd:restriction base="xsd:string">
-					<xsd:length fixed="true" value="1"/>
+					<xsd:minLength value="1"/>
 					<xsd:whiteSpace value="preserve"/>
 				</xsd:restriction>
 			</xsd:simpleType>
