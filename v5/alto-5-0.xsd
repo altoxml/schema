@@ -117,7 +117,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
-	3. Restrict "PointsType" strict as announced in 4.4
+	3. Restrict "PointsType" format as announced in 4.4
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
