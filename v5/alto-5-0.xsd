@@ -117,6 +117,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
+	6. Restrict ACCURACY attribute to 0-100 values range
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -432,10 +433,16 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 				<xsd:documentation>A link to the processing description that has been used for this page.</xsd:documentation>
 			</xsd:annotation>
 		</xsd:attribute>
-		<xsd:attribute name="ACCURACY" type="xsd:float" use="optional">
+		<xsd:attribute name="ACCURACY" use="optional">
 			<xsd:annotation>
 				<xsd:documentation>Estimated percentage of OCR Accuracy in range from 0 to 100 </xsd:documentation>
 			</xsd:annotation>
+			<xsd:simpleType>
+		        <xsd:restriction base="xsd:float">
+		            <xsd:minInclusive value="0.0"/>
+		            <xsd:maxInclusive value="100.0"/>
+		        </xsd:restriction>
+		    </xsd:simpleType>
 		</xsd:attribute>
 		<xsd:attribute name="PC" type="PCType" use="optional"/>
 		<xsd:attribute name="ROTATION" type="xsd:float" use="optional">
