@@ -117,6 +117,7 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 	5. Adapt xLink attribute group documentation on "BlockType"
 -->
 <!-- June 2024, version 5.0
+	7. Add "HARD_HYPHEN" attribute to "HYP"
 -->
 <xsd:schema xmlns="http://www.loc.gov/standards/alto/ns-v5#" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://www.loc.gov/standards/alto/ns-v5#" elementFormDefault="qualified" attributeFormDefault="unqualified" version="5.0">
 	<xsd:import namespace="http://www.w3.org/1999/xlink" schemaLocation="http://www.loc.gov/standards/xlink/xlink.xsd"/>
@@ -1080,6 +1081,11 @@ For the full text see https://creativecommons.org/licenses/by-sa/4.0/legalcode. 
 										<xsd:attribute name="HPOS" type="xsd:float" use="optional"/>
 										<xsd:attribute name="VPOS" type="xsd:float" use="optional"/>
 										<xsd:attribute name="CONTENT" type="xsd:string" use="required"/>
+									    <xsd:attribute name="HARD_HYPHEN" type="xsd:boolean" use="optional">
+											<xsd:annotation>
+												<xsd:documentation>True if this is a hard-hyphen (would appear in the word regardless of print location), false if this is a soft hyphen (only appears in the word if it is split at the end of a line).</xsd:documentation>
+											</xsd:annotation>
+										</xsd:attribute>
 									</xsd:complexType>
 								</xsd:element>
 							</xsd:sequence>
