@@ -1,0 +1,228 @@
+================================================================================
+CHECKS IN alto_schematron_initial_v_5_1.sch
+ALTO Schematron validation (namespace-agnostic: ALTO v1 through v5)
+File: /Users/haighton/Development/KB/ALTO_schematron/alto_schematron_initial_v_5_1.sch
+================================================================================
+
+Explanation of the roles (role) attached to each check:
+  - error   = hard failure; the document does not meet the requirement.
+  - warning = warning; probably wrong or suspicious, but not fatal.
+  - info    = informational message; purely for notice, not a failure.
+
+
+================================================================================
+PATTERN 0 — Document / namespace check  (id: alto-root)
+================================================================================
+
+CHECK 0.1 — Root element must be ALTO  (assert, error)
+  What: Verifies that the root element is an <alto> element in a recognized ALTO
+       namespace: either a namespace starting with
+       'http://www.loc.gov/standards/alto/', or the CCS variant
+       'http://schema.ccs-gmbh.com/ALTO'.
+  Why: If this is not an ALTO document, all checks below are unreliable. This
+       check makes sure you immediately know you are validating the wrong file
+       type.
+
+CHECK 0.2 — ALTO namespace detected  (report, info)
+  What: Reports (informationally) which ALTO namespace was found on the root
+       element.
+  Why: Useful to see which ALTO version/variant you are validating, since the
+       rest of the schema works namespace-agnostically.
+
+
+================================================================================
+PATTERN 1 — Numeric validity of box attributes  (id: numeric-box-attributes)
+================================================================================
+Applies to: Page, PrintSpace, TextBlock, Illustration, GraphicalElement,
+ComposedBlock, TextLine, String, HYP, Glyph, SP.
+
+CHECK 1.1 — VPOS valid  (assert, error)
+  What: If the VPOS attribute is present, it must be a number that is >= 0.
+  Why: VPOS is the vertical position (in pixels/coordinates) and can never be
+       negative or non-numeric.
+
+CHECK 1.2 — HPOS valid  (assert, error)
+  What: If HPOS is present, it must be a number >= 0.
+  Why: HPOS is the horizontal position; negative or non-numeric values are
+       impossible.
+
+CHECK 1.3 — WIDTH valid  (assert, error)
+  What: If WIDTH is present, it must be a number >= 0.
+  Why: A width cannot be negative or non-numeric.
+
+CHECK 1.4 — HEIGHT valid  (assert, error)
+  What: If HEIGHT is present, it must be a number >= 0.
+  Why: A height cannot be negative or non-numeric.
+
+
+================================================================================
+PATTERN 2 — Containment of child boxes in parent boxes  (id: parent-child-containment)
+================================================================================
+
+CHECK 2.1 — Child box lies within parent box  (assert, warning)
+  Applies to: String/HYP/SP within TextLine, Glyph within String, TextLine
+       within TextBlock, all children of ComposedBlock and PrintSpace.
+  What: Verifies that the bounding box (HPOS, VPOS, WIDTH, HEIGHT) of the child
+       element lies entirely within the bounding box of the parent element: the
+       left/top edge of the child does not sit before that of the parent, and
+       the right/bottom edge does not extend beyond that of the parent. The check
+       is skipped if not all required coordinates are present.
+  Why: Geometrically, the content (e.g. a word) should sit inside its container
+       (e.g. a text line). Overflowing boxes often indicate errors in the
+       OCR/layout coordinates.
+
+CHECK 2.2 — Element lies within the Page dimensions  (assert, warning)
+  Applies to: direct children of Page.
+  What: Verifies that a direct child of Page does not extend beyond the WIDTH of
+       the page with its HPOS+WIDTH, nor beyond the HEIGHT of the page with its
+       VPOS+HEIGHT. (Page itself has no HPOS/VPOS; the calculation starts from
+       0.) Skipped if coordinates are missing.
+  Why: Nothing on the page may fall outside the page dimensions; that indicates
+       incorrect coordinates.
+
+
+================================================================================
+PATTERN 3 — Empty containers  (id: empty-containers)
+================================================================================
+
+CHECK 3.1 — Layout contains at least one Page  (assert, warning)
+  What: A <Layout> must contain at least one <Page>.
+  Why: Without a Page the document describes no page content at all; it is
+       effectively empty.
+
+CHECK 3.2 — TextBlock contains at least one TextLine  (assert, warning)
+  What: Every <TextBlock> must contain at least one <TextLine>.
+  Why: A text block without text lines is contentless and probably an error.
+
+CHECK 3.3 — ComposedBlock contains at least one block element  (assert, warning)
+  What: A <ComposedBlock> must contain at least one block-type child: TextBlock,
+       Illustration, GraphicalElement or (nested) ComposedBlock.
+  Why: A composed block without any content is meaningless.
+
+CHECK 3.4 — TextLine contains at least one content element  (assert, warning)
+  What: A <TextLine> must contain at least one <String>, <HYP> or <SP>.
+  Why: A text line without words, hyphens or spaces is empty and probably
+       erroneous.
+
+
+================================================================================
+PATTERN 4 — Text-specific semantic checks  (id: text-semantics)
+================================================================================
+Applies to: String.
+
+CHECK 4.1 — FONTSIZE positive  (assert, error)
+  What: If FONTSIZE is present, it must be a number > 0.
+  Why: A font size of 0 or negative (or non-numeric) is impossible.
+
+CHECK 4.2 — WC (word confidence) between 0 and 1  (assert, error)
+  What: If WC is present, it must be a number between 0 and 1 (inclusive).
+  Why: WC is the confidence score of the recognized word and is by definition
+       normalized to the range 0–1.
+
+CHECK 4.3 — CONTENT not empty  (assert, warning)
+  What: If the CONTENT attribute is present, it may not be empty after
+       normalization (not just whitespace).
+  Why: A String containing no actual text is suspicious; normally it should hold
+       recognized text.
+
+
+================================================================================
+PATTERN 5 — Page-level semantic checks  (id: page-semantics)
+================================================================================
+Applies to: Page.
+
+CHECK 5.1 — PHYSICAL_IMG_NR positive integer  (assert, error)
+  What: If PHYSICAL_IMG_NR is present, it must be an integer > 0.
+  Why: This is the physical image/scan sequence number; it counts from 1 and
+       cannot be 0, negative or fractional.
+
+CHECK 5.2 — PC (page confidence) between 0 and 1  (assert, error)
+  What: If PC is present, it must be a number between 0 and 1 (inclusive).
+  Why: PC is the confidence score for the whole page, normalized to 0–1.
+
+CHECK 5.3 — ACCURACY between 0 and 100  (assert, error)
+  What: If ACCURACY is present, it must be a number between 0 and 100
+       (inclusive).
+  Why: ACCURACY is a percentage and must therefore fall within 0–100.
+
+
+================================================================================
+PATTERN 6 — Reference checks  (TAGREFS, STYLEREFS, PROCESSINGREFS)
+================================================================================
+
+CHECK 6.1 — Valid TAGREFS  (id: alto-tagrefs; assert, error)
+  What: For every element with a TAGREFS attribute, all (space-separated)
+       references are checked against the IDs under <Tags> in the ALTO document.
+       Every reference must match an existing Tags/*/@ID.
+  Why: TAGREFS points to tag data; a reference without an existing target is a
+       broken (dangling) reference.
+
+CHECK 6.2 — Valid STYLEREFS  (id: alto-stylerefs; assert, error)
+  What: For every element with a STYLEREFS attribute, all references must match
+       an existing ID under <Styles> in the document.
+  Why: STYLEREFS points to style definitions (font, paragraph style); a
+       non-existent reference is a broken reference.
+
+CHECK 6.3 — Valid PROCESSINGREFS  (id: alto-processingrefs; assert, error)
+  What: For every element with a PROCESSINGREFS attribute, all references must
+       match an existing <Processing> ID under Description in the document.
+  Why: PROCESSINGREFS links elements to processing steps (OCR software, date); a
+       reference without a target is invalid.
+
+
+================================================================================
+PATTERN 7 — Overlapping objects (blocks, lines, strings)
+================================================================================
+This is an abstract pattern (overlap-check) that is applied three times. In each
+case: if two bounding boxes overlap (accounting for a tolerance), an INFO message
+follows. Overlap is not always wrong, but it is worth flagging.
+
+CHECK 7.0 — Overlap detection (abstract, report, info)
+  What: Computes whether the bounding box of the current element geometrically
+       overlaps with a set of candidate elements, using an adjustable tolerance
+       (number of coordinate units of slack before it counts as overlap).
+  Why: Overlapping layout objects often indicate segmentation errors in the OCR.
+
+  CHECK 7.1 — Overlapping blocks  (id: alto-overlap-blocks; tolerance 0)
+    What: Compares each TextBlock/Illustration/GraphicalElement/ComposedBlock
+         with subsequent blocks of the same types on the SAME Page.
+    Why: Blocks on a page should normally not overlap each other.
+
+  CHECK 7.2 — Overlapping text lines  (id: alto-overlap-textlines; tolerance 0)
+    What: Compares each TextLine with the following TextLine siblings (within the
+         same block).
+    Why: Text lines within a block should not overlap each other.
+
+  CHECK 7.3 — Overlapping strings  (id: alto-overlap-strings; tolerance 1)
+    What: Compares each String with the following String siblings on the same
+         line, with 1 unit of tolerance.
+    Why: Words on one line should not overlap; the small tolerance prevents false
+         positives for nearly adjacent words.
+
+
+================================================================================
+PATTERN 8 — Hyphenation consistency  (id: alto-hyphenation)
+================================================================================
+
+CHECK 8.1 — HypPart1 is followed by HypPart2  (assert, warning)
+  What: A String with SUBS_TYPE='HypPart1' (first part of a word broken at the
+       line end) must be immediately followed by a String with
+       SUBS_TYPE='HypPart2'.
+  Why: A broken word consists of two linked halves; if the second part is
+       missing, the hyphenation is inconsistently encoded.
+
+CHECK 8.2 — HypPart2 is preceded by HypPart1  (assert, warning)
+  What: A String with SUBS_TYPE='HypPart2' must be immediately preceded by a
+       String with SUBS_TYPE='HypPart1'.
+  Why: The second part of a broken word cannot exist without the first part;
+       otherwise the hyphenation is inconsistent.
+
+CHECK 8.3 — HYP is at the end of the line  (assert, warning)
+  What: A <HYP> (hyphenation mark) within a TextLine may have no following
+       siblings; it must therefore be the last element of the line.
+  Why: A hyphen logically belongs at the end of a text line; if there is content
+       after it, the placement is wrong.
+
+================================================================================
+End of the list.
+================================================================================
